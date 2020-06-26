@@ -1,4 +1,4 @@
-# Lab 3: Set the room virtual thermostat with Azure IoT Device Twins
+# Lab 3: Remote control the room temperature
 
 ---
 
@@ -150,7 +150,6 @@ Azure IoT Central device properties are defined in Device templates.
 * **Linux** and **macOS** users start a new terminal command prompt.
 * **Windows 10 WSL** users must start a [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10) command prompt. Press <kbd>Windows</kbd>, type **wsl**, then press <kbd>Enter</kbd> to start a new Linux terminal command prompt.
 
-
 ### Step 2: Open the lab project
 
 1. Change to the **raspberry-pi-dot-net-learning-path** directory
@@ -162,27 +161,13 @@ Azure IoT Central device properties are defined in Device templates.
     code .
     ```
 
-### Step 3: Display the IoT Central device connection
-
-1. Switch back to IoT Central in your browser.
-2. Navigate to the device you created
-3. Click on **Connect**
-    ![](resources/iot-central-device-connection.png)
-
-### Step 4: Configure the project Environment File
+### Step 3: Configure the project environment file
 
 1. Switch back to Visual Studio Code
 2. Open the **.env** file
-3. Update the .env file with the connection information from IoT Central
+3. If you saved the .env file to Notepad or similar text editor then copy and paste configure to this labs .env file. Failing that, open the .env file in lab 2 and copy the contents to the lab 3 .env file.
 
-    ```conf
-    DPS_IDSCOPE="<Replace with your IoT Central ID Scope>"
-    DPS_REGISTRATION_ID="<Replace with your IoT Central Devic ID>"
-    DPS_PRIMARY_KEY="<Replace with your IoT Central Primary key>"
-    DPS_SECONDARY_KEY="<Replace with your IoT Central Secondary key>"
-    ```
-
-### Step 5: Start the app build deploy process
+### Step 4: Start the app build deploy process
 
 1. From Visual Studio Code, press <kbd>F5</kbd> to build, deploy, start, and attached the remote debugger to the application now running the Raspberry Pi.
 

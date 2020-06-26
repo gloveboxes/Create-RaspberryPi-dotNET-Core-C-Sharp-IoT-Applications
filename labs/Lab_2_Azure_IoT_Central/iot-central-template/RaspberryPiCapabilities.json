@@ -1,0 +1,109 @@
+{
+  "@id": "urn:raspberryPiDotnetCore:RaspberryPi_5jp:1",
+  "@type": "CapabilityModel",
+  "implements": [
+    {
+      "@id": "urn:raspberryPiDotnetCore:RaspberryPi_5jp:gvgwcw6hg:1",
+      "@type": "InterfaceInstance",
+      "displayName": {
+        "en": "Interface"
+      },
+      "name": "RaspberryPi_4jy",
+      "schema": {
+        "@id": "urn:raspberryPiDotnetCore:RaspberryPi_4jy:1",
+        "@type": "Interface",
+        "displayName": {
+          "en": "Interface"
+        },
+        "contents": [
+          {
+            "@id": "urn:raspberryPiDotnetCore:RaspberryPi_4jy:Temperature:1",
+            "@type": [
+              "Telemetry",
+              "SemanticType/Temperature"
+            ],
+            "displayName": {
+              "en": "Temperature"
+            },
+            "name": "Temperature",
+            "schema": "double",
+            "unit": "Units/Temperature/celsius"
+          },
+          {
+            "@id": "urn:raspberryPiDotnetCore:RaspberryPi_4jy:Pressure:1",
+            "@type": [
+              "Telemetry",
+              "SemanticType/Pressure"
+            ],
+            "displayName": {
+              "en": "Pressure"
+            },
+            "name": "Pressure",
+            "displayUnit": {
+              "en": "hPa"
+            },
+            "schema": "double"
+          },
+          {
+            "@id": "urn:raspberryPiDotnetCore:RaspberryPi_4jy:Humidity:1",
+            "@type": [
+              "Telemetry",
+              "SemanticType/Humidity"
+            ],
+            "displayName": {
+              "en": "Humidity"
+            },
+            "name": "Humidity",
+            "schema": "integer",
+            "unit": "Units/Humidity/percent"
+          },
+          {
+            "@id": "urn:raspberryPiDotnetCore:RaspberryPi_4jy:LightControl:1",
+            "@type": "Command",
+            "commandType": "synchronous",
+            "durable": false,
+            "request": {
+              "@id": "urn:raspberryPiDotnetCore:RaspberryPi_4jy:LightControl:State:1",
+              "@type": "SchemaField",
+              "displayName": {
+                "en": "State"
+              },
+              "name": "State",
+              "schema": "boolean"
+            },
+            "displayName": {
+              "en": "LightControl"
+            },
+            "name": "LightControl"
+          },
+          {
+            "@id": "urn:raspberryPiDotnetCore:RaspberryPi_4jy:Thermostat:1",
+            "@type": "Property",
+            "displayName": {
+              "en": "Thermostat"
+            },
+            "name": "Thermostat",
+            "writable": true,
+            "schema": "integer",
+            "unit": "Units/Temperature/celsius"
+          },
+          {
+            "@id": "urn:raspberryPiDotnetCore:RaspberryPi_4jy:RoomAction:1",
+            "@type": "Property",
+            "displayName": {
+              "en": "Room Action"
+            },
+            "name": "RoomAction",
+            "schema": "string"
+          }
+        ]
+      }
+    }
+  ],
+  "displayName": {
+    "en": "Raspberry Pi"
+  },
+  "@context": [
+    "http://azureiot.com/v1/contexts/IoTModel.json"
+  ]
+}

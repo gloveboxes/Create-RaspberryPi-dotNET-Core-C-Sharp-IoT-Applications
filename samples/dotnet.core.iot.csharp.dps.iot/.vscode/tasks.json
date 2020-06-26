@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "RaspberryPublish",
+            "command": "sh",
+            "type": "shell",
+            "problemMatcher": "$msCompile",
+            "args": [
+                "-c",
+                "\"dotnet publish -r linux-arm -c Debug -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ pi@rpi3a:~/${workspaceFolderBasename}\"",
+            ]
+        }
+    ]
+}
