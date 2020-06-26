@@ -236,9 +236,11 @@ The following commands makes a .NET Core project directory, then and create the 
 
 1. Click **Yes** to add required assets to build and debug.
 
-![](resources/create-new-project.png)
+    ![](resources/create-new-project.png)
 
-2. Replace the code in program.cs file with the following code. This code will read the Raspberry Pi CPU Temperature and display it in the system console window.
+2. Open the **program.cs** file.
+
+3. Replace the code in program.cs file with the following code. This code will read the Raspberry Pi CPU Temperature and display it in the system console window.
 
 ```c#
 using System;
