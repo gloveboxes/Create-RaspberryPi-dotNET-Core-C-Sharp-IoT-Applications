@@ -313,7 +313,7 @@ The launch configuration is responsible for calling the build task, and instruct
                     "pipeCwd": "${workspaceRoot}",
                     "pipeProgram": "/usr/bin/ssh",
                     "pipeArgs": [
-                        "raspberrypi.local"
+                        "pi@raspberrypi.local"
                     ],
                     "debuggerPath": "~/vsdbg/vsdbg"
                 }
@@ -343,7 +343,7 @@ The build task is responsible for compiling the application and copying the code
                 "problemMatcher": "$msCompile",
                 "args": [
                     "-c",
-                    "\"dotnet publish -r linux-arm -c Debug -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ raspberrypi.local:~/${workspaceFolderBasename}\"",
+                    "\"dotnet publish -r linux-arm -c Debug -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ pi@raspberrypi.local:~/${workspaceFolderBasename}\"",
                 ]
             }
         ]
@@ -363,6 +363,12 @@ Set a breakpoint in your code, for example at the 15, and from Visual Studio Cod
 Your code will build, it will be copied to your Raspberry Pi and the debugger will be attached and you can now start stepping through your code.
 
 ![Publish, Launch and Attach Debugger](resources/build-deploy-debug.png)
+
+### Viewing debugger output
+
+As part of the debug process the Visual Studio Code **DEBUG CONSOLE** will be activated. The output from the C# **Console.WriteLine** will be displayed in the debug console.
+
+![](resources/vs-code-debug-console.png)
 
 ---
 
