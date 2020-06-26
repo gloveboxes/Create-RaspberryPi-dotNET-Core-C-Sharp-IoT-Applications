@@ -8,29 +8,8 @@
             "problemMatcher": "$msCompile",
             "args": [
                 "-c",
-                "\"dotnet publish -r linux-arm -o bin/linux-arm/publish",
-                "${workspaceFolder}/${workspaceFolderBasename}.csproj\"",
-                ";",
-                "sh",
-                "-c",
-                "\"rsync -rvuz ${workspaceFolder}/bin/linux-arm/publish/ pi@raspberrypi.local:~/${workspaceFolderBasename}\""
-            ],
-            "windows": {
-                "command": "cmd",
-                "args": [
-                    "/c",
-                    "\"dotnet publish -r linux-arm -o bin\\linux-arm\\publish",
-                    "${workspaceFolder}\\${workspaceFolderBasename}.csproj\"",
-                    "&&",
-                    "bash",
-                    "-c",
-                    "\"rsync -rvuz $(wslpath '${workspaceFolder}')/bin/linux-arm/publish/ pi@raspberrypi.local:~/${workspaceFolderBasename}\""
-                ]
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+                "\"dotnet publish -r linux-arm -c Debug -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ raspberrypi.local:~/${workspaceFolderBasename}\"",
+            ]
         }
     ]
 }

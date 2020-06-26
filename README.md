@@ -2,19 +2,19 @@
 
 ![.net core loves single board computers](resources/banner.png)
 
-![twitter logo](resources/twitter-logo.png) Follow me on [Twitter](https://twitter.com/dglover).
+![twitter logo](resources/twitter-logo.png) Follow me on [Twitter](https://twitter.com/dglover) @dglover
 
 ---
 
 ## Source Code
 
-The source and the samples for this walk-through can be found [here](https://github.com/gloveboxes/dotNET-Core-IoT-Raspberry-Pi-Linux.-How-to-Build-Deploy-and-Debug).
+The source and the samples for this tutorial can be found [here](https://github.com/gloveboxes/Create-RaspberryPi-dotNET-Core-C-Sharp-IoT-Applications).
 
 ---
 
 ## Introduction
 
-The .NET Core IoT Library connects your applications to hardware. In this walk-through you will learn how to:
+The .NET Core IoT Library connects your applications to hardware. In this tutorial you will learn how to:
 
 1. Develop a C# .NET Core IoT application from your Linux, macOS or Windows 10 computer,
 2. Streamline the develop, deploy, and debug process using Visual Studio Code,
@@ -273,7 +273,7 @@ Your Visual Studio Code **program.cs** file should look like the following scree
 
 To deploy a project to your Raspberry Pi you need to configure Visual Studio Code to compile for **linux-arm**, how to copy the compiled code to the Raspberry Pi, and finally how to attach the debugger.
 
-For this walk-through, we are going to use [rsync](https://en.wikipedia.org/wiki/Rsync) to copy program files to the Raspberry Pi. Rsync is a very efficient file transfer protocol, comes standard with Linux, macOS, and Windows with the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10?WT.mc_id=github-blog-dglover) installed.
+For this tutorial, we are going to use [rsync](https://en.wikipedia.org/wiki/Rsync) to copy program files to the Raspberry Pi. Rsync is a very efficient file transfer protocol, comes standard with Linux, macOS, and Windows with the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10?WT.mc_id=github-blog-dglover) installed.
 
 ---
 
