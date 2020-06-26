@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Raspberry Pi Publish, Launch, and Attach Debugger",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "RaspberryPublish",
+            "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
+            "cwd": "~/${workspaceFolderBasename}",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "args": [
+                "https://your-dmx-function.azurewebsites.net/api"
+            ],
+            "pipeTransport": {
+                "pipeCwd": "${workspaceRoot}",
+                "pipeProgram": "/usr/bin/ssh",
+                "pipeArgs": [
+                    "pi@raspberrypi.local"
+                ],
+                "debuggerPath": "~/vsdbg/vsdbg"
+            },
+            "windows": {
+                "pipeTransport": {
+                    "pipeCwd": "${workspaceRoot}",
+                    "pipeProgram": "plink",
+                    "pipeArgs": [
+                        "-ssh",
+                        "-pw",
+                        "raspberry",
+                        "pi@raspberrypi.local"
+                    ],
+                    "debuggerPath": "~/vsdbg/vsdbg"
+                }
+            }
+        }
+    ]
+}

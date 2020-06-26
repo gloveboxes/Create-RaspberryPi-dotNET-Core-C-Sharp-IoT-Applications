@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "RaspberryPublish",
+            "command": "sh",
+            "type": "shell",
+            "problemMatcher": "$msCompile",
+            "args": [
+                "-c",
+                "\"dotnet publish -r linux-arm -o bin/linux-arm/publish",
+                "${workspaceFolder}/${workspaceFolderBasename}.csproj\"",
+                ";",
+                "sh",
+                "-c",
+                "\"rsync -rvuz ${workspaceFolder}/bin/linux-arm/publish/ pi@raspberrypi.local:~/${workspaceFolderBasename}\""
+            ],
+            "windows": {
+                "command": "cmd",
+                "args": [
+                    "/c",
+                    "\"dotnet publish -r linux-arm -o bin\\linux-arm\\publish",
+                    "${workspaceFolder}\\${workspaceFolderBasename}.csproj\"",
+                    "&&",
+                    "bash",
+                    "-c",
+                    "\"rsync -rvuz $(wslpath '${workspaceFolder}')/bin/linux-arm/publish/ pi@raspberrypi.local:~/${workspaceFolderBasename}\""
+                ]
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
