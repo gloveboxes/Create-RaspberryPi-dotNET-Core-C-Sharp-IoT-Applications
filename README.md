@@ -234,6 +234,8 @@ The following commands makes a .NET Core project directory, then and create the 
 
 ## Add the Visual Studio Code Build and Debug assets
 
+1. Click **Yes** to add required assets to build and debug.
+
 ![](resources/create-new-project.png)
 
 2. Replace the code in program.cs file with the following code. This code will read the Raspberry Pi CPU Temperature and display it in the system console window.
