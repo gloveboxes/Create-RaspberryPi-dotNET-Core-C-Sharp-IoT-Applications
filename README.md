@@ -24,11 +24,9 @@ The .NET Core IoT Library connects your applications to hardware. In this tutori
 
 1. Develop a C# .NET Core IoT application from your Linux, macOS or Windows 10 computer,
 2. Streamline the develop, deploy, and debug process using Visual Studio Code,
-3. Use the [.NET Core IoT](https://dotnet.microsoft.com/apps/iot) library to control motors,
-4. Remote control your Rover robot using [Azure Static websites](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website-how-to?tabs=azure-portal) and [Azure IoT direct methods](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-direct-methods),
-5. Stream telemetry to [Azure IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/about-iot-hub?WT.mc_id=github-blog-dglover),
-6. Capture Rover actions to [Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/) using [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/),
-7. Analysis Rover Actions with [Cosmos DB Jupyter Notebooks](https://docs.microsoft.com/en-us/azure/cosmos-db/cosmosdb-jupyter-notebooks).
+3. Use the [.NET Core IoT](https://dotnet.microsoft.com/apps/iot) library to read the CPU temperature. The CPU temperature will be used to represent the room temperature in this lab scenario,
+4. Stream temperature telemetry to [Azure IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/about-iot-hub?WT.mc_id=github-blog-dglover),
+5. Set a virtual remote room thermostat.
 
 ---
 
