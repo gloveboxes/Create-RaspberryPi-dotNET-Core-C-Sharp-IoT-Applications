@@ -5,28 +5,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using Iot.Device.CpuTemperature;
 
+using web_app.Interfaces;
 
 namespace web_app.Pages
 {
     public class IndexModel : PageModel
     {
-
         public double Temperature { get; set; }
-        CpuTemperature _temperature;
-
+        private readonly IDevice _device;
         private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(IDevice device, ILogger<IndexModel> logger)
         {
             _logger = logger;
-            _temperature = new CpuTemperature();
+            _device = device;
         }
 
         public void OnGet()
         {
-            Temperature = Math.Round(_temperature.Temperature.Celsius, 2);
+            Temperature= _device.GetCpuTemperature();
         }
     }
 }

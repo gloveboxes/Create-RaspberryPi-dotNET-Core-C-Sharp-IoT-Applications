@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using web_app.Interfaces;
+using web_app.Services;
 
 
 namespace web_app
@@ -25,6 +27,7 @@ namespace web_app
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddScoped<IDevice, Device>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
