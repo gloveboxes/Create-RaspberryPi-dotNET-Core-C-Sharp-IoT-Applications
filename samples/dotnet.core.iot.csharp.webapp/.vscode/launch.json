@@ -25,7 +25,7 @@
                 "pipeCwd": "${workspaceRoot}",
                 "pipeProgram": "/usr/bin/ssh",
                 "pipeArgs": [
-                    "pi@rpi3a"
+                    "pi@raspberrypi.local"
                 ],
                 "debuggerPath": "~/vsdbg/vsdbg"
             }
