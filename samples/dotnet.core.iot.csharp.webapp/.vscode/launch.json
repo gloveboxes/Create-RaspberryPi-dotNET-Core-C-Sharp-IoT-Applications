@@ -1,0 +1,34 @@
+{
+    "version": "0.2.0",
+    "configurations": [      
+        {
+            "name": "Raspberry Pi Publish, Launch, and Attach Debugger",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "RaspberryPublish",
+            "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "http://192.168.10.199:5000"
+            },
+            // "args":"--urls \"http://192.168.10.199:5000\"",
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            },
+            "cwd": "~/${workspaceFolderBasename}",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "pipeTransport": {
+                "pipeCwd": "${workspaceRoot}",
+                "pipeProgram": "/usr/bin/ssh",
+                "pipeArgs": [
+                    "pi@rpi3a"
+                ],
+                "debuggerPath": "~/vsdbg/vsdbg"
+            }
+        }
+    ]
+}

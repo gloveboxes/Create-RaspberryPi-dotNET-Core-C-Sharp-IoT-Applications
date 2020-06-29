@@ -14,7 +14,7 @@
     <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.*" />
     <PackageReference Include="Newtonsoft.Json" Version="12.*" />
     <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Transport.Http" Version="1.*" />
-    <PackageReference Include="UnitsNet" Version="4.65.0" />
+    <PackageReference Include="UnitsNet" Version="4.*" />
   </ItemGroup>
 
 </Project>

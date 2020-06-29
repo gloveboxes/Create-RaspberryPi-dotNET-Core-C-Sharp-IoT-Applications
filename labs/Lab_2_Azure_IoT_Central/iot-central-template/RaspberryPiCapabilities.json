@@ -95,13 +95,22 @@
             },
             "name": "RoomAction",
             "schema": "string"
+          },
+          {
+            "@id": "urn:raspberryPiDotnetCore:RaspberryPi_4jy:RoomTemperature:1",
+            "@type": "Property",
+            "displayName": {
+              "en": "Room Temperature"
+            },
+            "name": "RoomTemperature",
+            "schema": "double"
           }
         ]
       }
     }
   ],
   "displayName": {
-    "en": "Raspberry Pi"
+    "en": "Raspberry Pi Template"
   },
   "@context": [
     "http://azureiot.com/v1/contexts/IoTModel.json"

@@ -24,11 +24,11 @@ namespace dotnet.core.iot
         static CpuTemperature _temperature = new CpuTemperature();
         static int _msgId = 0;
         static int thermostat = 0;
-
         enum RoomAction { Unknown, Heating, Cooling, Green }
-
         static RoomAction previousRoomState = RoomAction.Unknown;
+        static int previousRoomTemperature = 0;
         static RoomAction roomState = RoomAction.Unknown;
+        static DeviceClient iotClient = null;
 
 
         static async Task Main(string[] args)
@@ -42,7 +42,7 @@ namespace dotnet.core.iot
                 DeviceRegistrationResult result = await provClient.RegisterAsync();
                 IAuthenticationMethod auth = new DeviceAuthenticationWithRegistrySymmetricKey(result.DeviceId, (security as SecurityProviderSymmetricKey).GetPrimaryKey());
 
-                using (DeviceClient iotClient = DeviceClient.Create(result.AssignedHub, auth, TransportType.Mqtt))
+                using (iotClient = DeviceClient.Create(result.AssignedHub, auth, TransportType.Mqtt))
                 {
                     await iotClient.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertyChangedAsync, null).ConfigureAwait(false);   // callback for Device Twin updates
                     await DeviceTwinGetInitialState(iotClient); // Get current cloud state of the device twin
@@ -56,10 +56,12 @@ namespace dotnet.core.iot
                                 temperature = Math.Round(_temperature.Temperature.Celsius, 2);
 
                                 Console.WriteLine($"The CPU temperature is {temperature}");
-                                await SendMsgIotHub(iotClient, temperature);
+                                await SendMsgIotHub(temperature);
 
                                 roomState = (int)temperature > thermostat ? RoomAction.Cooling : (int)temperature < thermostat ? RoomAction.Heating : RoomAction.Green;
-                                await UpdateRoomAction(iotClient, roomState);
+                                await UpdateRoomAction(roomState);
+                                await UpdateRoomTemperature(temperature);
+
                             }
                             catch (Exception ex)
                             {
@@ -72,7 +74,7 @@ namespace dotnet.core.iot
             }
         }
 
-        private static async Task SendMsgIotHub(DeviceClient iotClient, double temperature)
+        private static async Task SendMsgIotHub(double temperature)
         {
             var telemetry = new Telemetry() { Temperature = Math.Round(temperature, 2), MessageId = _msgId++ };
             string json = JsonConvert.SerializeObject(telemetry);
@@ -96,19 +98,33 @@ namespace dotnet.core.iot
             if (desiredProperties.Contains("Thermostat"))
             {
                 int.TryParse(Convert.ToString(desiredProperties["Thermostat"]["value"]), out thermostat);
+                await UpdateDeviceTwin("Thermostat", thermostat);
+            }
+        }
+        
+        private static async Task UpdateRoomTemperature(double temperature)
+        {
+            if (previousRoomTemperature != (int)temperature)
+            {
+                await UpdateDeviceTwin("RoomTemperature", temperature);
+                previousRoomTemperature = (int)temperature;
             }
         }
 
-        private static async Task UpdateRoomAction(DeviceClient iotClient, RoomAction roomState)
+        private static async Task UpdateRoomAction(RoomAction roomState)
         {
             if (roomState != previousRoomState)
             {
-                TwinCollection reportedProperties = new TwinCollection();
-                reportedProperties["RoomAction"] = roomState.ToString();
-                await iotClient.UpdateReportedPropertiesAsync(reportedProperties).ConfigureAwait(false);
-
+                await UpdateDeviceTwin("RoomAction", roomState.ToString());
                 previousRoomState = roomState;
             }
+        }
+
+        private static async Task UpdateDeviceTwin(string propertyName, object value)
+        {
+            TwinCollection reportedProperties = new TwinCollection();
+            reportedProperties[propertyName] = value;
+            await iotClient.UpdateReportedPropertiesAsync(reportedProperties).ConfigureAwait(false);
         }
 
         class Telemetry

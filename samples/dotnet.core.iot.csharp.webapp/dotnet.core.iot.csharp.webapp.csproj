@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>web_app</RootNamespace>
+  </PropertyGroup>
+
+    <ItemGroup>
+    <PackageReference Include="Iot.Device.Bindings" Version="1.1.0-prerelease.20153.1" />
+    <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.*" />
+  </ItemGroup>
+
+</Project>
