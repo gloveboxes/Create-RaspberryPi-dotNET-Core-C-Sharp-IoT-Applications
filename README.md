@@ -17,8 +17,8 @@ The source and the samples for this tutorial can be found [here](https://github.
 * Lab 1: [Create your  first Raspberry Pi .NET Core C# IoT Application](labs/Lab_1_Build_dot_NET_Core_app/README.md)
 * Lab 2: [Connect a room environment monitor to Azure IoT Central](labs/Lab_2_Azure_IoT_Central/README.md)
 * Lab 3: [Remote control the room temperature](labs/Lab_3_IoT_Central_and_Device_Twins/README.md)
-* Lab 4: [Create an ASP.NET Core Web to display the room temperature](labs/Lab_4_Create_ASP_dotNET_Core_WebApp/README.md)
-* Lab 5: [Create an ASP.NET Core Web API to return the room temperature](labs/Lab_5_Create_ASP_dotNET_Core_WebApi/README.md)
+<!-- * Lab 4: [Create an ASP.NET Core Web to display the room temperature](labs/Lab_4_Create_ASP_dotNET_Core_WebApp/README.md)
+* Lab 5: [Create an ASP.NET Core Web API to return the room temperature](labs/Lab_5_Create_ASP_dotNET_Core_WebApi/README.md) -->
 
 ## Introduction
 
@@ -26,8 +26,8 @@ The .NET Core IoT Library connects your applications to hardware. In this tutori
 
 1. Develop a C# .NET Core IoT application from your Linux, macOS or Windows 10 computer,
 2. Streamline the develop, deploy, and debug process using Visual Studio Code,
-3. Use the [.NET Core IoT](https://dotnet.microsoft.com/apps/iot) library to read the CPU temperature. The CPU temperature will be used to represent the room temperature in this lab scenario,
-4. Stream temperature telemetry to [Azure IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/about-iot-hub?WT.mc_id=github-blog-dglover),
+3. Use the [.NET Core IoT](https://dotnet.microsoft.com/apps/iot?WT.mc_id=julyot-dnc-dglover) library to read the CPU temperature. The CPU temperature will be used to represent the room temperature in this lab scenario,
+4. Stream temperature telemetry to [Azure IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/about-iot-hub?WT.mc_id=julyot-dnc-dglover),
 5. Set a virtual remote room thermostat.
 
 ---
@@ -56,7 +56,7 @@ The Raspberry Pi Sense HAT has builtin sensors and a LED panel. If you have one 
 
 It used by millions of developers, it is mature, fast, supports multiple programming languages (C#, F#, and VB.NET), runs on multiple platforms (Linux, macOS, and Windows), and is supported across multiple processor architectures. It is used to build device, cloud, and IoT applications.
 
-[.NET Core](https://docs.microsoft.com/en-au/dotnet/core?WT.mc_id=github-blog-dglover) is an [open-source](https://github.com/dotnet/coreclr/blob/master/LICENSE.TXT), general-purpose development platform maintained by Microsoft and the .NET community on [GitHub](https://github.com/dotnet/core).
+[.NET Core](https://docs.microsoft.com/en-au/dotnet/core?WT.mc_id=julyot-dnc-dglover) is an [open-source](https://github.com/dotnet/coreclr/blob/master/LICENSE.TXT), general-purpose development platform maintained by Microsoft and the .NET community on [GitHub](https://github.com/dotnet/core).
 
 ---
 
@@ -66,7 +66,7 @@ It used by millions of developers, it is mature, fast, supports multiple program
 
 There are lots of great resources for learning C#. Check out the following:
 
-1. [C# official documentation](https://docs.microsoft.com/en-us/dotnet/csharp/)
+1. [C# official documentation](https://docs.microsoft.com/en-us/dotnet/csharp/?WT.mc_id=julyot-dnc-dglover)
 2. [C# 101 Series with Scott Hanselman and Kendra Havens](https://aka.ms/dotnet3-csharp)
 3. [Full C# Tutorial Path for Beginners and Everyone Else](https://youtu.be/LUv20QxXjfw)
 

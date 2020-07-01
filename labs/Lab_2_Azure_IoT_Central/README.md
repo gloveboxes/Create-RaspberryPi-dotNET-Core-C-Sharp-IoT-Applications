@@ -4,7 +4,7 @@
 
 ---
 
-|Author|[Dave Glover](https://developer.microsoft.com/en-us/advocates/dave-glover?WT.mc_id=github-blog-dglover), Microsoft Cloud Developer Advocate, [@dglover](https://twitter.com/dglover) |
+|Author|[Dave Glover](https://developer.microsoft.com/en-us/advocates/dave-glover?WT.mc_id=julyot-dnc-dglover), Microsoft Cloud Developer Advocate, [@dglover](https://twitter.com/dglover) |
 |:----|:---|
 |Date| March 2020|
 
@@ -19,14 +19,14 @@ Each module assumes you have completed the previous module.
 * Lab 1: [Create your  first Raspberry Pi .NET Core C# IoT Application](../Lab_1_Build_dot_NET_Core_app/README.md)
 * Lab 2: [Connect a room environment monitor to Azure IoT Central](../Lab_2_Azure_IoT_Central/README.md)
 * Lab 3: [Remote control the room temperature](../Lab_3_IoT_Central_and_Device_Twins/README.md)
-* Lab 4: [Create an ASP.NET Core Web to display the room temperature](../Lab_4_Create_ASP_dotNET_Core_WebApp/README.md)
-* Lab 5: [Create an ASP.NET Core Web API to return the room temperature](../Lab_5_Create_ASP_dotNET_Core_WebApi/README.md)
+<!-- * Lab 4: [Create an ASP.NET Core Web to display the room temperature](../Lab_4_Create_ASP_dotNET_Core_WebApp/README.md)
+* Lab 5: [Create an ASP.NET Core Web API to return the room temperature](../Lab_5_Create_ASP_dotNET_Core_WebApi/README.md) -->
 
 ---
 
 ## What you will learn
 
-You will learn how to build a Raspberry Pi application that connects and sends telemetry to [Azure IoT Central](https://azure.microsoft.com/services/iot-central/?WT.mc_id=github-blog-dglover).
+You will learn how to build a Raspberry Pi application that connects and sends telemetry to [Azure IoT Central](https://azure.microsoft.com/services/iot-central/?WT.mc_id=julyot-dnc-dglover).
 
 ---
 
@@ -47,7 +47,7 @@ We recommend that you use the most up-to-date browser that's compatible with you
 * Chrome (latest version)
 * Firefox (latest version)
 
-[Supported browsers for Azure IoT Central](https://docs.microsoft.com/en-us/azure/iot-central/core/iot-central-supported-browsers)
+[Supported browsers for Azure IoT Central](https://docs.microsoft.com/en-us/azure/iot-central/core/iot-central-supported-browsers?WT.mc_id=julyot-dnc-dglover)
 
 ## Tutorial Overview
 
@@ -63,15 +63,15 @@ We recommend that you use the most up-to-date browser that's compatible with you
 
 Your Azure Sphere device can securely connect and communicate with cloud services. Azure Sphere includes built-in library support for both Azure IoT Hub and Azure IoT Central. This lab focuses on Azure IoT Central.
 
-This project leverages the [Azure IoT Hub Device Provisioning Service (PDS)](https://docs.microsoft.com/en-us/azure-sphere/app-development/use-azure-iot?WT.mc_id=github-blog-dglover), which is included with Azure IoT Central. The Device Provisioning Service (DPS) enables zero-touch, just-in-time, large scale device provisioning.
+This project leverages the [Azure IoT Hub Device Provisioning Service (PDS)](https://docs.microsoft.com/en-us/azure-sphere/app-development/use-azure-iot?WT.mc_id=julyot-dnc-dglover), which is included with Azure IoT Central. The Device Provisioning Service (DPS) enables zero-touch, just-in-time, large scale device provisioning.
 
-Take a moment to read [Your IoT journey: simplified and secure with Azure IoT Central and Azure Sphere](https://techcommunity.microsoft.com/t5/internet-of-things/your-iot-journey-simplified-and-secure-with-azure-iot-central/ba-p/1404247).
+Take a moment to read [Your IoT journey: simplified and secure with Azure IoT Central and Azure Sphere](https://techcommunity.microsoft.com/t5/internet-of-things/your-iot-journey-simplified-and-secure-with-azure-iot-central/ba-p/1404247?WT.mc_id=julyot-dnc-dglover).
 
 ---
 
 ## Azure IoT Central
 
-[Azure IoT Central](https://azure.microsoft.com/en-in/services/iot-central/?WT.mc_id=github-blog-dglover) provides an easy way to connect, monitor, and manage your Internet of Things (IoT) assets at scale.
+[Azure IoT Central](https://azure.microsoft.com/en-in/services/iot-central/?WT.mc_id=julyot-dnc-dglover) provides an easy way to connect, monitor, and manage your Internet of Things (IoT) assets at scale.
 
 ![Azure IoT Central](resources/azure-iot-central.jpg)
 
@@ -79,7 +79,7 @@ Take a moment to read [Your IoT journey: simplified and secure with Azure IoT Ce
 
 ## Step 1: Create a new IoT Central Application
 
-1. So the lab instructions are still visible, right mouse click, and open this link "[Azure IoT Central](https://azure.microsoft.com/en-au/services/iot-central/?WT.mc_id=pycon-blog-dglover)" in a new window.
+1. So the lab instructions are still visible, right mouse click, and open this link "[Azure IoT Central](https://azure.microsoft.com/en-au/services/iot-central/?WT.mc_id=julyot-dnc-dglover)" in a new window.
 
 2. Click **Build a solution**.
 
@@ -109,7 +109,7 @@ Take a moment to read [Your IoT journey: simplified and secure with Azure IoT Ce
 
 A device template is a blueprint that defines the characteristics and behaviors of a type of device that connects to an Azure IoT Central application.
 
-For more information on device templates, review the [Define a new IoT device type in your Azure IoT Central application](https://docs.microsoft.com/en-us/azure/iot-central/core/howto-set-up-template?WT.mc_id=github-blog-dglover) article. 
+For more information on device templates, review the [Define a new IoT device type in your Azure IoT Central application](https://docs.microsoft.com/en-us/azure/iot-central/core/howto-set-up-template?WT.mc_id=julyot-dnc-dglover) article. 
 
 1. Click **Device templates**, then **+ New**.
     ![](resources/iot-central-template-new.png)
@@ -164,7 +164,7 @@ For more information on device templates, review the [Define a new IoT device ty
 
 2. Next, confirm and click **Publish**
 
->See [Define a new IoT device type in your Azure IoT Central application](https://docs.microsoft.com/en-us/azure/iot-central/core/howto-set-up-template?WT.mc_id=github-blog-dglover) for information on creating your own device templates.
+>See [Define a new IoT device type in your Azure IoT Central application](https://docs.microsoft.com/en-us/azure/iot-central/core/howto-set-up-template?WT.mc_id=julyot-dnc-dglover) for information on creating your own device templates.
 
 ---
 
@@ -173,7 +173,7 @@ For more information on device templates, review the [Define a new IoT device ty
 ### Step 1 Open the command prompt on your computer
 
 * **Linux** and **macOS** users start a new terminal command prompt.
-* **Windows 10 WSL** users must start a [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10) command prompt. Press <kbd>Windows</kbd>, type **wsl**, then press <kbd>Enter</kbd> to start a new Linux terminal command prompt.
+* **Windows 10 WSL** users must start a [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10?WT.mc_id=julyot-dnc-dglover) command prompt. Press <kbd>Windows</kbd>, type **wsl**, then press <kbd>Enter</kbd> to start a new Linux terminal command prompt.
 
 
 ### Step 2: Open the lab project

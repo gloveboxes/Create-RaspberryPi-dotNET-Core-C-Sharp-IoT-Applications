@@ -11,8 +11,8 @@
 * Lab 1: [Create your  first Raspberry Pi .NET Core C# IoT Application](../Lab_1_Build_dot_NET_Core_app/README.md)
 * Lab 2: [Connect a room environment monitor to Azure IoT Central](../Lab_2_Azure_IoT_Central/README.md)
 * Lab 3: [Remote control the room temperature](../Lab_3_IoT_Central_and_Device_Twins/README.md)
-* Lab 4: [Create an ASP.NET Core Web to display the room temperature](../Lab_4_Create_ASP_dotNET_Core_WebApp/README.md)
-* Lab 5: [Create an ASP.NET Core Web API to return the room temperature](../Lab_5_Create_ASP_dotNET_Core_WebApi/README.md)
+<!-- * Lab 4: [Create an ASP.NET Core Web to display the room temperature](../Lab_4_Create_ASP_dotNET_Core_WebApp/README.md)
+* Lab 5: [Create an ASP.NET Core Web API to return the room temperature](../Lab_5_Create_ASP_dotNET_Core_WebApi/README.md) -->
 
 ## Source Code
 
@@ -31,7 +31,7 @@ The source and the samples for this tutorial can be found [here](https://github.
 
 This tutorial uses Visual Studio Code. Visual Studio Code is a code editor and is one of the most popular **Open Source** projects on [GitHub](https://github.com/microsoft/vscode). Visual Studio Code runs on Linux, macOS, and Windows.
 
-1. Install **[Visual Studio Code](https://code.visualstudio.com/Download?WT.mc_id=pycon-blog-dglover)**
+1. Install **[Visual Studio Code](https://code.visualstudio.com/Download?WT.mc_id=julyot-dnc-dglover)**
 
 ---
 
@@ -39,8 +39,8 @@ This tutorial uses Visual Studio Code. Visual Studio Code is a code editor and i
 
 This tutorial uses the Windows Subsystem for Linux also known as WSL for building .NET Core applications for the Raspberry Pi.
 
-1. Follow the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10?WT.mc_id=github-blog-dglover) installation guide. I suggest you install WSL 2 for a more complete Linux experience from Windows 10.
-2. From the Windows Store I suggest you install the [Ubuntu 20.04 LTS](https://www.microsoft.com/store/productId/9N6SVWS3RX71) distribution. It is free.
+1. Follow the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10?WT.mc_id=julyot-dnc-dglover) installation guide. I suggest you install WSL 2 for a more complete Linux experience from Windows 10.
+2. From the Windows Store I suggest you install the [Ubuntu 20.04 LTS](https://www.microsoft.com/store/productId/9N6SVWS3RX71?WT.mc_id=julyot-dnc-dglover) distribution. It is free.
 3. This tutorial will refer to Windows 10 users as **Windows 10 WSL** users as you will be using the Windows Subsystem for Linux command prompt.
 
 ---
@@ -48,7 +48,7 @@ This tutorial uses the Windows Subsystem for Linux also known as WSL for buildin
 ### Start a command prompt on your computer
 
 * **Linux** and **macOS** users start a new terminal command prompt.
-* **Windows 10 WSL** users must start a [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10) command prompt. Press <kbd>Windows</kbd>, type **wsl**, then press <kbd>Enter</kbd> to start a new Linux terminal command prompt.
+* **Windows 10 WSL** users must start a [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10?WT.mc_id=julyot-dnc-dglover) command prompt. Press <kbd>Windows</kbd>, type **wsl**, then press <kbd>Enter</kbd> to start a new Linux terminal command prompt.
 
 **Leave this command prompt open as you will be using it for the next steps of this tutorial.**
 
@@ -110,11 +110,11 @@ The following creates a new SSH key pair and copies the SSH public key to the Ra
 #### For Linux and Windows 10 WSL users
 
 1. From the command prompt.
-2. Head to the [.NET Core download](https://dotnet.microsoft.com/download) page and install the .NET Core SDK. A reminder for Windows 10 WSL users. Remember to follow the installation guide for Linux as you must install the .NET Core SDK into your Windows WSL Linux distribution.
+2. Head to the [.NET Core download](https://dotnet.microsoft.com/download?WT.mc_id=julyot-dnc-dglover) page and install the .NET Core SDK. A reminder for Windows 10 WSL users. Remember to follow the installation guide for Linux as you must install the .NET Core SDK into your Windows WSL Linux distribution.
 
 #### For macOS users
 
-1. Head to the [.NET Core download](https://dotnet.microsoft.com/download) page. Download and install the .NET Core SDK package.
+1. Head to the [.NET Core download](https://dotnet.microsoft.com/download?WT.mc_id=julyot-dnc-dglover) page. Download and install the .NET Core SDK package.
 
 <!-- ---
 
@@ -163,7 +163,7 @@ The following commands makes a .NET Core project directory, then and create the 
     ```
 
 3. **Windows 10 WSL** users only. This is a onetime operation.
-    1. You will be prompted to install the [Visual Studio Code Remote WSL Development Extension](https://code.visualstudio.com/docs/remote/wsl). Click **Install**.
+    1. You will be prompted to install the [Visual Studio Code Remote WSL Development Extension](https://code.visualstudio.com/docs/remote/wsl?WT.mc_id=julyot-dnc-dglover). Click **Install**.
     2. **Reopen** the project with Remote-WSL. From Visual Studio Code, press <kbd>F1</kbd>, type and select **Remote-SSH**.
 
     > The Visual Studio Code Remote - WSL extension lets you use the Windows Subsystem for Linux (WSL) as your full-time development environment right from VS Code. You can develop in a Linux-based environment, use Linux-specific toolchains and utilities, and run and debug your Linux-based applications all from the comfort of Windows.
@@ -216,13 +216,13 @@ Your Visual Studio Code **program.cs** file should look like the following scree
 
 To deploy a project to your Raspberry Pi you need to configure Visual Studio Code to compile for **linux-arm**, how to copy the compiled code to the Raspberry Pi, and finally how to attach the debugger.
 
-For this tutorial, we are going to use [rsync](https://en.wikipedia.org/wiki/Rsync) to copy program files to the Raspberry Pi. Rsync is a very efficient file transfer protocol, comes standard with Linux, macOS, and Windows with the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10?WT.mc_id=github-blog-dglover) installed.
+For this tutorial, we are going to use [rsync](https://en.wikipedia.org/wiki/Rsync) to copy program files to the Raspberry Pi. Rsync is a very efficient file transfer protocol, comes standard with Linux, macOS, and Windows with the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install-win10?WT.mc_id=julyot-dnc-dglover) installed.
 
 ---
 
 ## Update the Launch and Build Task configurations
 
-We need to update the [launch.json](https://code.visualstudio.comresources/editor/debugging?WT.mc_id=github-blog-dglover) and [tasks.json](https://code.visualstudio.comresources/editor/debugging?WT.mc_id=github-blog-dglover) files with the following code.
+We need to update the [launch.json](https://code.visualstudio.com/docs/editor/debugging?WT.mc_id=julyot-dnc-dglover) and [tasks.json](https://code.visualstudio.com/docs/editor/debugging?WT.mc_id=julyot-dnc-dglover) files with the following code.
 
 ![](resources/build-configuration.png)
 
@@ -261,7 +261,7 @@ The launch configuration is responsible for calling the build task, and instruct
     }
     ```
 
-4. If you renamed your Raspberry Pi you will need to update the launch.json file with the name or IP address of your Raspberry Pi. [Find and Replace](https://code.visualstudio.com/docs/editor/codebasics#_find-and-replace) **raspberrypi.local** with the host name or IP address of your Raspberry.
+4. If you renamed your Raspberry Pi you will need to update the launch.json file with the name or IP address of your Raspberry Pi. [Find and Replace](https://code.visualstudio.com/docs/editor/codebasics?WT.mc_id=julyot-dnc-dglover) **raspberrypi.local** with the host name or IP address of your Raspberry.
 
 ### Set the tasks.json configuration
 
@@ -289,13 +289,13 @@ The build task is responsible for compiling the application and copying the code
     }
     ```
 
-4. If you renamed your Raspberry Pi you will need to update the tasks.json file with the name or IP address of your Raspberry Pi. [Find and Replace](https://code.visualstudio.com/docs/editor/codebasics#_find-and-replace) **raspberrypi.local** with the host name or IP address of your Raspberry.
+4. If you renamed your Raspberry Pi you will need to update the tasks.json file with the name or IP address of your Raspberry Pi. [Find and Replace](https://code.visualstudio.com/docs/editor/codebasics?WT.mc_id=julyot-dnc-dglover) **raspberrypi.local** with the host name or IP address of your Raspberry.
 
 ---
 
 ## Build, Deploy and Debug your .NET Core IoT App
 
-Review this [Visual Studio Debugger Guide](https://code.visualstudio.comresources/editor/debugging?WT.mc_id=github-blog-dglover) if you've not used the debugger before.
+Review this [Visual Studio Debugger Guide](https://code.visualstudio.comresources/editor/debugging?WT.mc_id=julyot-dnc-dglover) if you've not used the debugger before.
 
 Set a breakpoint in your code, for example at the 15, and from Visual Studio Code click the Debug icon on the Activity bar, ensure "**Publish, Launch and Attach Debugger**" is selected in the dropdown, and click the green run icon.
 
@@ -313,7 +313,7 @@ As part of the debug process the Visual Studio Code **DEBUG CONSOLE** will be ac
 
 ## Connect your Raspberry Pi to Azure IoT Hub
 
-1. Follow the "[Create an Azure IoT Hub (Free)](https://docs.microsoft.com/en-us/azure/iot-hub/quickstart-send-telemetry-dotnet?WT.mc_id=github-blog-dglover)" tutorial until the "Send simulated telemetry" section. You will need to the connection string of the device you created.
+1. Follow the "[Create an Azure IoT Hub (Free)](https://docs.microsoft.com/en-us/azure/iot-hub/quickstart-send-telemetry-dotnet?WT.mc_id=julyot-dnc-dglover)" tutorial until the "Send simulated telemetry" section. You will need to the connection string of the device you created.
 
 2. Add the Package references for Azure IoT Hub and JSON.NET. This can either be done by executing the 'dotnet add package' command, or by updating the references directly in the .csproj file.
 
@@ -403,7 +403,7 @@ Press F5 to run the current 'Publish, Launch, and Attach Debugger' build task.
 
 ## Monitor the Azure IoT Hub Telemetry
 
-1. Install the [Visual Studio IoT Hub Toolkit](https://marketplace.visualstudio.com/itemdetails?itemName=vsciot-vscode.azure-iot-toolkit&WT.mc_id=github-blog-dglover).
+1. Install the [Visual Studio IoT Hub Toolkit](https://marketplace.visualstudio.com/itemdetails?itemName=vsciot-vscode.azure-iot-toolkit&WT.mc_id=julyot-dnc-dglover).
 
 2. Review the [Visual Studio IoT Hub Toolkit](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki)] Wiki for information on using the IoT Hub Toolkit Visual Studio Extension.
 
@@ -411,7 +411,7 @@ Press F5 to run the current 'Publish, Launch, and Attach Debugger' build task.
 
 [Remote Debugging On Linux Arm](https://github.com/OmniSharp/omnisharp-vscode/wiki/Remote-Debugging-On-Linux-Arm)
 
-[Azure IoT libraries for .NET](https://docs.microsoft.com/en-au/dotnet/api/overview/azure/iot?view=azure-dotnet&WT.mc_id=hackster-blog-dglover)
+[Azure IoT libraries for .NET](https://docs.microsoft.com/en-au/dotnet/api/overview/azure/iot?view=azure-dotnet&WT.mc_id=julyot-dnc-dglover)
 
 ---
 
@@ -438,4 +438,4 @@ cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "mkdir ~/.ssh; cat >> ~/.ssh/autho
 References
 
 - [Is there an equivalent to ssh-copy-id for Windows?](https://serverfault.com/questions/224810/is-there-an-equivalent-to-ssh-copy-id-for-windows)
-- [Installation of OpenSSH For Windows Server 2019 and Windows 10](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?WT.mc_id=github-blog-dglover)
+- [Installation of OpenSSH For Windows Server 2019 and Windows 10](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?WT.mc_id=julyot-dnc-dglover)
