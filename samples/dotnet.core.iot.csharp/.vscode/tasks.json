@@ -8,7 +8,7 @@
             "problemMatcher": "$msCompile",
             "args": [
                 "-c",
-                "\"dotnet publish -r linux-arm -c Debug -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ raspberrypi.local:~/${workspaceFolderBasename}\"",
+                "\"dotnet publish -r linux-arm -c Debug -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ pi@raspberrypi.local:~/${workspaceFolderBasename}\"",
             ]
         }
     ]
