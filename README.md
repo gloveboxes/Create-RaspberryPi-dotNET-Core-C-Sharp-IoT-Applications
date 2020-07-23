@@ -1,8 +1,14 @@
 # Build Raspberry Pi .NET Core C# IoT Applications on Raspberry Pi OS or Ubuntu 20.04
 
-![.net core loves single board computers](resources/banner.png)
+![.net core loves single board computers](https://raw.githubusercontent.com/gloveboxes/Create-RaspberryPi-dotNET-Core-C-Sharp-IoT-Applications/master/resources/banner.png)
 
-![twitter logo](resources/twitter-logo.png) Follow me on [Twitter](https://twitter.com/dglover) @dglover
+![twitter logo](https://raw.githubusercontent.com/gloveboxes/Create-RaspberryPi-dotNET-Core-C-Sharp-IoT-Applications/master/resources/twitter-logo.png) Follow me on [Twitter](https://twitter.com/dglover) @dglover
+
+---
+
+## #JulyOT
+
+This is part of the #JulyOT [IoT Tech Community](http://aka.ms/julyot) series, a collection of blog posts, hands-on-labs, and videos designed to demonstrate and teach developers how to build projects with Azure Internet of Things (IoT) services. Please also follow [#JulyOT](https://twitter.com/hashtag/JulyOT) on Twitter.
 
 ---
 
@@ -46,14 +52,6 @@ Check out the following [Raspberry Pi Tips and Tricks](./TIPS_AND_TRICKS.md) to 
 
 ---
 
-## Raspberry Pi .NET Core Developer Learning Path
-
-* Lab 1: [Create your  first Raspberry Pi .NET Core C# IoT Application](labs/Lab_1_Build_dot_NET_Core_app/README.md)
-* Lab 2: [Connect a room environment monitor to Azure IoT Central](labs/Lab_2_Azure_IoT_Central/README.md)
-* Lab 3: [Remote control the room temperature](labs/Lab_3_IoT_Central_and_Device_Twins/README.md)
-<!-- * Lab 4: [Create an ASP.NET Core Web to display the room temperature](labs/Lab_4_Create_ASP_dotNET_Core_WebApp/README.md)
-* Lab 5: [Create an ASP.NET Core Web API to return the room temperature](labs/Lab_5_Create_ASP_dotNET_Core_WebApi/README.md) -->
-
 ## Introduction
 
 The .NET Core IoT Library connects your applications to hardware. In this tutorial you will learn how to:
@@ -72,11 +70,11 @@ The .NET Core IoT Library connects your applications to hardware. In this tutori
 
 The Raspberry Pi 3a Plus is a great device for .NET Core.
 
-![](resources/raspberrypi-3a-plus.jpg)
+![](https://raw.githubusercontent.com/gloveboxes/Create-RaspberryPi-dotNET-Core-C-Sharp-IoT-Applications/master/resources/raspberrypi-3a-plus.jpg)
 
 I'm super happy with my Raspberry Pi 4B 4GB and 8GB devices seen here dress with a heatsink case.
 
-![](resources/aluminium-heatsink-case-for-raspberry-pi-4-black_1_1.png)
+![](https://raw.githubusercontent.com/gloveboxes/Create-RaspberryPi-dotNET-Core-C-Sharp-IoT-Applications/master/resources/aluminium-heatsink-case-for-raspberry-pi-4-black_1_1.png)
 
 I like to use Raspberry Pi OS Lite as it takes less resources than the full Raspberry Pi Desktop version and I do all my Raspberry Pi development from my computer.
 
@@ -88,7 +86,7 @@ If you are not comfortable setting up Raspberry Pi OS Lite (Headless), then foll
 
 The Raspberry Pi Sense HAT has builtin sensors and a LED panel. If you have one then great, one of the labs uses this HAT.
 
-![](resources/pi-sense-hat.jpg)
+![](https://raw.githubusercontent.com/gloveboxes/Create-RaspberryPi-dotNET-Core-C-Sharp-IoT-Applications/master/resources/pi-sense-hat.jpg)
 
 ---
 
@@ -102,7 +100,7 @@ It used by millions of developers, it is mature, fast, supports multiple program
 
 ## Learning C#
 
-![](resources/c-sharp.png)
+![](https://raw.githubusercontent.com/gloveboxes/Create-RaspberryPi-dotNET-Core-C-Sharp-IoT-Applications/master/resources/c-sharp.png)
 
 There are lots of great resources for learning C#. Check out the following:
 
@@ -126,7 +124,18 @@ The [.NET Core IoT Repository](https://github.com/dotnet/iot/tree/master/src) co
 
 The drivers in the repository include sample code along with wiring diagrams. For example the [BMx280 - Digital Pressure Sensors BMP280/BME280](https://github.com/dotnet/iot/tree/master/src/devices/Bmxx80).
 
-![](resources/rpi-bmp280_i2c.png)
+![](https://raw.githubusercontent.com/gloveboxes/Create-RaspberryPi-dotNET-Core-C-Sharp-IoT-Applications/master/resources/rpi-bmp280_i2c.png)
 
 ---
 
+## Raspberry Pi .NET Core Developer Learning Path
+
+* Lab 1: [Create your  first Raspberry Pi .NET Core C# IoT Application](labs/Lab_1_Build_dot_NET_Core_app/README.md)
+* Lab 2: [Connect a room environment monitor to Azure IoT Central](labs/Lab_2_Azure_IoT_Central/README.md)
+* Lab 3: [Remote control the room temperature](labs/Lab_3_IoT_Central_and_Device_Twins/README.md)
+<!-- * Lab 4: [Create an ASP.NET Core Web to display the room temperature](labs/Lab_4_Create_ASP_dotNET_Core_WebApp/README.md)
+* Lab 5: [Create an ASP.NET Core Web API to return the room temperature](labs/Lab_5_Create_ASP_dotNET_Core_WebApi/README.md) -->
+
+---
+
+Have fun and stay safe and be sure to follow us on [#JulyOT](https://twitter.com/hashtag/JulyOT?src=hash&ref_src=twsrc%5Etfw).
