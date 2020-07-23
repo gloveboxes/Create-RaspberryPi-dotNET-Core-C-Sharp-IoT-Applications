@@ -1,4 +1,4 @@
-# Build Raspberry Pi .NET Core C# IoT Applications on Raspberry Pi OS or Ubuntu 20.04
+# Build Raspberry Pi .NET Core C# IoT Applications for Raspberry Pi OS or Ubuntu 20.04
 
 ![.net core loves single board computers](https://raw.githubusercontent.com/gloveboxes/Create-RaspberryPi-dotNET-Core-C-Sharp-IoT-Applications/master/resources/banner.png)
 
@@ -18,31 +18,21 @@ This tutorial has been tested with .NET Core applications running on **Raspberry
 
 ## Source Code
 
-The source and the samples for this tutorial can be found [here](https://github.com/gloveboxes/Create-RaspberryPi-dotNET-Core-C-Sharp-IoT-Applications).
+The source and the samples for this tutorial can be found [here](https://gloveboxes.github.io/Create-RaspberryPi-dotNET-Core-C-Sharp-IoT-Applications/).
 
-The examples are found in the samples director this repo and cover the following .NET Core scenarios.
+### Examples
 
-1. Simple hello world: dotnet.core.iot.csharp
-2. Azure IoT Hub: dotnet.core.iot.csharp.iothub
-3. .NET Core Web API: dotnet.core.iot.csharp.webapi
-4. .NET Core Web App: dotnet.core.iot.csharp.webapp
-5. Azure IoT Hub or IoT Central with DPS (Device Provisioning Service): dotnet.core.iot.csharp.dps.iot
-6. Azure IoT device twins: dotnet.core.iot.csharp.dps.iot.device-twins
-7. Azure IoT Hub device twins, and Pi Sense HAT : dotnet.core.iot.csharp.dps.iot.device-twins.sense.hat
-8. Simple Pi Sense HAT Sample: dotnet.core.iot.csharp.sense.hat
-9: F# and .NET Core: dotnet.core.iot.fsharp
+The examples are found in the samples director of this repo and cover the following .NET Core scenarios.
 
----
-
-## Conventions used in the tutorial
-
-The tutorial covers Raspberry Pi OS, Ubuntu 20.04 for both ARM32 and ARM64.
-
-The tutorial refers to user and host as **user@host**.
-
-For Raspberry Pi this maps to **pi@raspberrypi.local** or depending on your network set up **pi@raspberrypi**. The default password is **raspberry**.
-
-For Ubuntu 20.04 this maps to **ubuntu@ubuntu.local** or **ubuntu@ubuntu**. The default password is **ubuntu**.
+1. **Simple hello world**: dotnet.core.iot.csharp
+2. **Azure IoT Hub**: dotnet.core.iot.csharp.iothub
+3. **.NET Core Web API**: dotnet.core.iot.csharp.webapi
+4. **.NET Core Web App**: dotnet.core.iot.csharp.webapp
+5. **Azure IoT Hub or IoT Central with DPS (Device Provisioning Service)**: dotnet.core.iot.csharp.dps.iot
+6. **Azure IoT device twins**: dotnet.core.iot.csharp.dps.iot.device-twins
+7. **Azure IoT Hub device twins, and Pi Sense HAT**: dotnet.core.iot.csharp.dps.iot.device-twins.sense.hat
+8. **Simple Pi Sense HAT Sample**: dotnet.core.iot.csharp.sense.hat
+9: **F# and .NET Core**: dotnet.core.iot.fsharp
 
 ---
 
@@ -60,7 +50,7 @@ The .NET Core IoT Library connects your applications to hardware. In this tutori
 2. Streamline the develop, deploy, and debug process using Visual Studio Code,
 3. Use the [.NET Core IoT](https://dotnet.microsoft.com/apps/iot?WT.mc_id=julyot-dnc-dglover) library to read the CPU temperature. The CPU temperature will be used to represent the room temperature in this lab scenario,
 4. Stream temperature telemetry to [Azure IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/about-iot-hub?WT.mc_id=julyot-dnc-dglover),
-5. Set a virtual remote room thermostat.
+5. Control a remote HVAC system.
 
 ---
 
@@ -130,11 +120,11 @@ The drivers in the repository include sample code along with wiring diagrams. Fo
 
 ## Raspberry Pi .NET Core Developer Learning Path
 
-* Lab 1: [Create your  first Raspberry Pi .NET Core C# IoT Application](labs/Lab_1_Build_dot_NET_Core_app/README.md)
-* Lab 2: [Connect a room environment monitor to Azure IoT Central](labs/Lab_2_Azure_IoT_Central/README.md)
-* Lab 3: [Remote control the room temperature](labs/Lab_3_IoT_Central_and_Device_Twins/README.md)
-<!-- * Lab 4: [Create an ASP.NET Core Web to display the room temperature](labs/Lab_4_Create_ASP_dotNET_Core_WebApp/README.md)
-* Lab 5: [Create an ASP.NET Core Web API to return the room temperature](labs/Lab_5_Create_ASP_dotNET_Core_WebApi/README.md) -->
+
+
+* Lab 1: [Create your  first Raspberry Pi .NET Core C# IoT Application](https://github.com/gloveboxes/Create-RaspberryPi-dotNET-Core-C-Sharp-IoT-Applications/blob/master/labs/Lab_1_Build_dot_NET_Core_app/README.md)
+* Lab 2: [Connect a HVAC room environment monitor to Azure IoT Central](https://github.com/gloveboxes/Create-RaspberryPi-dotNET-Core-C-Sharp-IoT-Applications/blob/master/labs/Lab_2_Azure_IoT_Central/README.md)
+* Lab 3: [Remote control the room temperature](https://github.com/gloveboxes/Create-RaspberryPi-dotNET-Core-C-Sharp-IoT-Applications/blob/master/labs/Lab_3_IoT_Central_and_Device_Twins/README.md)
 
 ---
 
