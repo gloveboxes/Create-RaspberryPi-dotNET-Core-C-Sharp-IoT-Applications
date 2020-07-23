@@ -1,4 +1,4 @@
-# Build Raspberry Pi .NET Core C# IoT Applications for Raspberry Pi OS or Ubuntu 20.04
+# Build Raspberry Pi .NET Core IoT Applications running on Raspberry Pi OS or Ubuntu 20.04
 
 ![.net core loves single board computers](https://raw.githubusercontent.com/gloveboxes/Create-RaspberryPi-dotNET-Core-C-Sharp-IoT-Applications/master/resources/banner.png)
 
