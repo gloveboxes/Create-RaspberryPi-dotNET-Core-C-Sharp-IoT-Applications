@@ -12,6 +12,18 @@ The source and the samples for this tutorial can be found [here](https://github.
 
 ---
 
+## Operating Systems and ARM architectures supported
+
+This tutorial has been tested with .NET Core applications running on Raspberry Pi OS and Ubuntu 20.04 for both 32bit (ARM32) and 64bit (ARM64). The projects also include build tasks for Debug and Release configurations.
+
+---
+
+## Tips and Tricks for setting up Ubuntu 20.04 on a Raspberry Pi
+
+Check out the following [Raspberry Pi Tips and Tricks](./TIPS_AND_TRICKS.md) to boot Ubuntu from USB3 SSD, how to overclock, enable WiFi, and support for the Raspberry Pi Sense HAT.
+
+---
+
 ## Raspberry Pi .NET Core Developer Learning Path
 
 * Lab 1: [Create your  first Raspberry Pi .NET Core C# IoT Application](labs/Lab_1_Build_dot_NET_Core_app/README.md)

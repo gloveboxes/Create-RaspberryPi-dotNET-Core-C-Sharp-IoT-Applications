@@ -1,43 +1,89 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (web)",
+            "name": "ARM32 Debug Publish, Launch, and Attach Debugger",
+            "env": {
+                "IOT_HUB_CONNECTION_STRING": ""
+            },
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "RaspberryPublish",
+            "preLaunchTask": "ARM32DebugPublish",
             "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
-            "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_URLS": "http://192.168.10.199:5100"
-            },
-            "args": [],
             "cwd": "~/${workspaceFolderBasename}",
             "stopAtEntry": false,
-            "serverReadyAction": {
-                "action": "openExternally",
-                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
-            },
-            "sourceFileMap": {
-                "/Views": "${workspaceFolder}/Views"
-            },
+            "console": "internalConsole",
             "pipeTransport": {
                 "pipeCwd": "${workspaceRoot}",
                 "pipeProgram": "/usr/bin/ssh",
                 "pipeArgs": [
-                    "pi@raspberrypi.local"
+                    "user@host"
                 ],
                 "debuggerPath": "~/vsdbg/vsdbg"
             }
         },
         {
-            "name": ".NET Core Attach",
+            "name": "ARM32 Release Publish, Launch, and Attach Debugger",
+            "env": {
+                "IOT_HUB_CONNECTION_STRING": ""
+            },
             "type": "coreclr",
-            "request": "attach",
-            "processId": "${command:pickProcess}"
+            "request": "launch",
+            "preLaunchTask": "ARM32ReleasePublish",
+            "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
+            "cwd": "~/${workspaceFolderBasename}",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "pipeTransport": {
+                "pipeCwd": "${workspaceRoot}",
+                "pipeProgram": "/usr/bin/ssh",
+                "pipeArgs": [
+                    "user@host"
+                ],
+                "debuggerPath": "~/vsdbg/vsdbg"
+            }
+        },
+        {
+            "name": "ARM64 Debug Publish, Launch, and Attach Debugger",
+            "env": {
+                "IOT_HUB_CONNECTION_STRING": ""
+            },
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "ARM64DebugPublish",
+            "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
+            "cwd": "~/${workspaceFolderBasename}",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "pipeTransport": {
+                "pipeCwd": "${workspaceRoot}",
+                "pipeProgram": "/usr/bin/ssh",
+                "pipeArgs": [
+                    "user@host"
+                ],
+                "debuggerPath": "~/vsdbg/vsdbg"
+            }
+        },
+        {
+            "name": "ARM64 Release Publish, Launch, and Attach Debugger",
+            "env": {
+                "IOT_HUB_CONNECTION_STRING": ""
+            },
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "ARM64ReleasePublish",
+            "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
+            "cwd": "~/${workspaceFolderBasename}",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "pipeTransport": {
+                "pipeCwd": "${workspaceRoot}",
+                "pipeProgram": "/usr/bin/ssh",
+                "pipeArgs": [
+                    "user@host"
+                ],
+                "debuggerPath": "~/vsdbg/vsdbg"
+            }
         }
     ]
 }

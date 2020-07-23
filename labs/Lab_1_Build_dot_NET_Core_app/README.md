@@ -110,7 +110,13 @@ The following creates a new SSH key pair and copies the SSH public key to the Ra
 #### For Linux and Windows 10 WSL users
 
 1. From the command prompt.
-2. Head to the [.NET Core download](https://dotnet.microsoft.com/download?WT.mc_id=julyot-dnc-dglover) page and install the .NET Core SDK. A reminder for Windows 10 WSL users. Remember to follow the installation guide for Linux as you must install the .NET Core SDK into your Windows WSL Linux distribution.
+2. For Windows 10 WSL users. Before installing .NET Core be sure to change to home directory in the Linux subsystem.
+
+    ```bash
+    cd ~/
+    ```
+
+3. Head to the [.NET Core download](https://dotnet.microsoft.com/download?WT.mc_id=julyot-dnc-dglover) page and install the .NET Core SDK. A reminder for Windows 10 WSL users. Remember to follow the installation guide for Linux as you must install the .NET Core SDK into your Windows WSL Linux distribution.
 
 #### For macOS users
 
@@ -138,7 +144,7 @@ Download the latest [Git for Mac installer](https://sourceforge.net/projects/git
 
 The following commands makes a .NET Core project directory, then and create the .NET Core Console app adding the Iot.Device.Bindings package.
 
-1. From the command prompt.
+1. From the command prompt. For Windows 10 WSL users, this means the Linux command prompt.
 2. Change to your preferred projects directory
 3. Create the .NET Core application directory.
 
