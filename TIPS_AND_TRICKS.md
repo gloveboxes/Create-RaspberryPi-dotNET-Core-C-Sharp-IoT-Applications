@@ -169,6 +169,13 @@ sudo chmod g+rw /dev/i2c-1
 sudo usermod -aG i2c $USER
 ```
 
-
-
 #### Grant permission to the I2C bus
+
+---
+
+## Install Docker
+
+```bash
+sudo apt install docker.io 
+```
+
