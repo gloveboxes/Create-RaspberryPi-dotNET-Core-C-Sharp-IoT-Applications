@@ -134,6 +134,12 @@ A great reference for this process is [How to overclock Raspberry Pi 4](https://
     sudo reboot
     ```
 
+### Monitor CPU Frequency
+
+```bash
+sudo watch -n 1  cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_cur_freq
+```
+
 ## Raspberry Pi Sense Hat on Ubuntu 20.04
 
 1. Edit the usercfg.txt file
