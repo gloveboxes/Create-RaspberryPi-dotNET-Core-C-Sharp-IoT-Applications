@@ -183,6 +183,7 @@ sudo usermod -aG i2c $USER
 
 ```bash
 sudo apt install docker.io 
+sudo usermod -aG docker $USER
 ```
 
 ## Install MySql
