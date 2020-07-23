@@ -107,7 +107,7 @@ For now boot from USB3 SSD is not directly supported by Ubuntu 20.04. But you ca
     tmpfs             388436       0    388436   0% /run/user/1000
     ```
 
-## How to over clock your Raspberry Pi 4 from Ubuntu 20.04
+## How to overclock your Raspberry Pi 4 from Ubuntu 20.04
 
 A great reference for this process is [How to overclock Raspberry Pi 4](https://magpi.raspberrypi.org/articles/how-to-overclock-raspberry-pi-4) MagPi article.
 
