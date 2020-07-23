@@ -1,4 +1,4 @@
-# Create Raspberry Pi .NET Core C# IoT Applications
+# Build Raspberry Pi .NET Core C# IoT Applications on Raspberry Pi OS or Ubuntu 20.04
 
 ![.net core loves single board computers](resources/banner.png)
 
@@ -6,15 +6,37 @@
 
 ---
 
+## Operating Systems and ARM architectures supported
+
+This tutorial has been tested with .NET Core applications running on **Raspberry Pi OS** and **Ubuntu 20.04** (including Ubuntu Mate 20.04) for both 32bit (ARM32) and 64bit (ARM64). The projects also include build tasks for Debug and Release configurations.
+
 ## Source Code
 
 The source and the samples for this tutorial can be found [here](https://github.com/gloveboxes/Create-RaspberryPi-dotNET-Core-C-Sharp-IoT-Applications).
 
+The examples are found in the samples director this repo and cover the following .NET Core scenarios.
+
+1. Simple hello world: dotnet.core.iot.csharp
+2. Azure IoT Hub: dotnet.core.iot.csharp.iothub
+3. .NET Core Web API: dotnet.core.iot.csharp.webapi
+4. .NET Core Web App: dotnet.core.iot.csharp.webapp
+5. Azure IoT Hub or IoT Central with DPS (Device Provisioning Service): dotnet.core.iot.csharp.dps.iot
+6. Azure IoT device twins: dotnet.core.iot.csharp.dps.iot.device-twins
+7. Azure IoT Hub device twins, and Pi Sense HAT : dotnet.core.iot.csharp.dps.iot.device-twins.sense.hat
+8. Simple Pi Sense HAT Sample: dotnet.core.iot.csharp.sense.hat
+9: F# and .NET Core: dotnet.core.iot.fsharp
+
 ---
 
-## Operating Systems and ARM architectures supported
+## Conventions used in the tutorial
 
-This tutorial has been tested with .NET Core applications running on Raspberry Pi OS and Ubuntu 20.04 for both 32bit (ARM32) and 64bit (ARM64). The projects also include build tasks for Debug and Release configurations.
+The tutorial covers Raspberry Pi OS, Ubuntu 20.04 for both ARM32 and ARM64.
+
+The tutorial refers to user and host as **user@host**.
+
+For Raspberry Pi this maps to **pi@raspberrypi.local** or depending on your network set up **pi@raspberrypi**. The default password is **raspberry**.
+
+For Ubuntu 20.04 this maps to **ubuntu@ubuntu.local** or **ubuntu@ubuntu**. The default password is **ubuntu**.
 
 ---
 
@@ -46,9 +68,15 @@ The .NET Core IoT Library connects your applications to hardware. In this tutori
 
 ## Raspberry Pi Hardware
 
+.Net Core requires an AMR32v7 processor and above, so anything Raspberry Pi 2 or better and you are good to go. Note, Raspberry Pi Zero is an ARM32v6 processor, and is not supported.
+
+The Raspberry Pi 3a Plus is a great device for .NET Core.
+
 ![](resources/raspberrypi-3a-plus.jpg)
 
-.Net Core requires an AMR32v7 processor and above, so anything Raspberry Pi 2 or better and you are good to go. Note, Raspberry Pi Zero is an ARM32v6 processor, and is not supported.
+I'm super happy with my Raspberry Pi 4B 4GB and 8GB devices seen here dress with a heatsink case.
+
+![](resources/aluminium-heatsink-case-for-raspberry-pi-4-black_1_1.png)
 
 I like to use Raspberry Pi OS Lite as it takes less resources than the full Raspberry Pi Desktop version and I do all my Raspberry Pi development from my computer.
 

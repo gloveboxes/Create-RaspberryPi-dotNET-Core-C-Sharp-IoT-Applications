@@ -45,7 +45,6 @@ To use WiFi 5G you must set the wireless central regulatory domain.
                         password: "<Your wifi access point password>"
     ```
 
-
 ## Boot Ubuntu 20.04 from USB3 SSD
 
 For now boot from USB3 SSD is not directly supported by Ubuntu 20.04. But you can do a kernel pivot, which means boot from SD Card as normal and then switch the root drive to the SSD drive and continue to bring up and run the OS from the SSD. With a decent SSD you will get excellent IO performance on a Raspberry Pi.
@@ -53,9 +52,11 @@ For now boot from USB3 SSD is not directly supported by Ubuntu 20.04. But you ca
 1. Create your Ubuntu 20.04 SD Card as usual. The easiest way is to use the Raspberry Pi Imager.
 2. Start the Raspberry Pi from the SD Card. Not you will either need to start with a HDMI screen, keyboard/mouse attached, or start the Raspberry Pi attached to your network by Ethernet.
 3. If you started the Raspberry Pi connected via Ethernet then you will need to SSH into the Raspberry Pi running Ubuntu 20.04.
+
     ```bash
     ssh ubuntu@ubuntu
     ```
+
     The default password is ubuntu.
 4. Connect the USB3 SSD drive to the Raspberry Pi. **WARNING**. The following process will delete all data from the Raspberry Pi.
 5. Run the following command on the Raspberry Pi.
@@ -109,6 +110,8 @@ For now boot from USB3 SSD is not directly supported by Ubuntu 20.04. But you ca
 ## How to over clock your Raspberry Pi 4 from Ubuntu 20.04
 
 A great reference for this process is [How to overclock Raspberry Pi 4](https://magpi.raspberrypi.org/articles/how-to-overclock-raspberry-pi-4) MagPi article.
+
+**WARNING**: If you overclock the Raspberry Pi 4 you will need some sort of cooling otherwise the CPU will heat up quickly and the CPU frequency will be throttled back to reduce the temperature which somewhat defeats the purpose of overclocking.
 
 1. Edit the usercfg.txt file
 

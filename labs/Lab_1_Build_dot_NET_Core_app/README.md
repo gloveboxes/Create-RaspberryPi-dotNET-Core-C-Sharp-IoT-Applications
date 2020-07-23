@@ -20,6 +20,15 @@ The source and the samples for this tutorial can be found [here](https://github.
 
 ---
 
+## Conventions used in the tutorial
+
+The tutorial covers Raspberry Pi OS, Ubuntu 20.04 for both ARM32 and ARM64.
+
+The tutorial refers to user and host as **user@host**.
+
+For Raspberry Pi this maps to **pi@raspberrypi.local** or depending on your network set up **pi@raspberrypi**. The default password is **raspberry**.
+
+For Ubuntu 20.04 this maps to **ubuntu@ubuntu.local** or **ubuntu@ubuntu**. The default password is **ubuntu**.
 
 ---
 
@@ -63,7 +72,7 @@ This tutorial assumes your Raspberry Pi is known as **raspberrypi.local**. Depen
 3. Log on to the Raspberry Pi over your network
 
     ```bash
-    ssh pi@raspberrypi.local
+    ssh user@host
     ```
 
 4. Update Raspberry Pi OS and reboot the Raspberry Pi.
@@ -88,7 +97,7 @@ The following creates a new SSH key pair and copies the SSH public key to the Ra
 2. Create an SSH certificate and copy the public certificate to the Raspberry Pi. You will be prompted to trust the Raspberry Pi and for the Raspberry Pi password.
 
     ```bash
-    ssh-keygen -t rsa && ssh-copy-id pi@raspberrypi.local
+    ssh-keygen -t rsa && ssh-copy-id user@host
     ```
 
 ---
@@ -98,7 +107,7 @@ The following creates a new SSH key pair and copies the SSH public key to the Ra
 1. From the command prompt.
 3. Install the Visual Studio Code .NET Core Debugger on to the Raspberry Pi.
     ```bash
-    ssh pi@raspberry.local "curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -r linux-arm -v latest -l ~/vsdbg"
+    ssh user@host "curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -r linux-arm -v latest -l ~/vsdbg"
     ```
 
 ---
@@ -121,22 +130,6 @@ The following creates a new SSH key pair and copies the SSH public key to the Ra
 #### For macOS users
 
 1. Head to the [.NET Core download](https://dotnet.microsoft.com/download?WT.mc_id=julyot-dnc-dglover) page. Download and install the .NET Core SDK package.
-
-<!-- ---
-
-## Install the git client on your computer
-
-### For Linux and Windows 10 WSL users
-
-1. From the command prompt.
-2. Run the following command to install git.
-    ```bash
-    sudo apt install git
-    ```
-
-### For macOS users
-
-Download the latest [Git for Mac installer](https://sourceforge.net/projects/git-osx-installer/files/) and install. For more details, follow these [instructions](https://www.atlassian.com/git/tutorials/install-git). -->
 
 ---
 
@@ -243,13 +236,15 @@ The launch configuration is responsible for calling the build task, and instruct
     ```json
     {
         "version": "0.2.0",
-        "configurations": [      
+        "configurations": [
             {
-                "name": "Raspberry Pi Publish, Launch, and Attach Debugger",
-                "env":{"IOT_HUB_CONNECTION_STRING": ""},
+                "name": "ARM32 Debug Publish, Launch, and Attach Debugger",
+                "env": {
+                    "IOT_HUB_CONNECTION_STRING": ""
+                },
                 "type": "coreclr",
                 "request": "launch",
-                "preLaunchTask": "RaspberryPublish",
+                "preLaunchTask": "ARM32DebugPublish",
                 "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
                 "cwd": "~/${workspaceFolderBasename}",
                 "stopAtEntry": false,
@@ -258,7 +253,70 @@ The launch configuration is responsible for calling the build task, and instruct
                     "pipeCwd": "${workspaceRoot}",
                     "pipeProgram": "/usr/bin/ssh",
                     "pipeArgs": [
-                        "pi@raspberrypi.local"
+                        "user@host"
+                    ],
+                    "debuggerPath": "~/vsdbg/vsdbg"
+                }
+            },
+            {
+                "name": "ARM32 Release Publish, Launch, and Attach Debugger",
+                "env": {
+                    "IOT_HUB_CONNECTION_STRING": ""
+                },
+                "type": "coreclr",
+                "request": "launch",
+                "preLaunchTask": "ARM32ReleasePublish",
+                "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
+                "cwd": "~/${workspaceFolderBasename}",
+                "stopAtEntry": false,
+                "console": "internalConsole",
+                "pipeTransport": {
+                    "pipeCwd": "${workspaceRoot}",
+                    "pipeProgram": "/usr/bin/ssh",
+                    "pipeArgs": [
+                        "user@host"
+                    ],
+                    "debuggerPath": "~/vsdbg/vsdbg"
+                }
+            },
+            {
+                "name": "ARM64 Debug Publish, Launch, and Attach Debugger",
+                "env": {
+                    "IOT_HUB_CONNECTION_STRING": ""
+                },
+                "type": "coreclr",
+                "request": "launch",
+                "preLaunchTask": "ARM64DebugPublish",
+                "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
+                "cwd": "~/${workspaceFolderBasename}",
+                "stopAtEntry": false,
+                "console": "internalConsole",
+                "pipeTransport": {
+                    "pipeCwd": "${workspaceRoot}",
+                    "pipeProgram": "/usr/bin/ssh",
+                    "pipeArgs": [
+                        "user@host"
+                    ],
+                    "debuggerPath": "~/vsdbg/vsdbg"
+                }
+            },
+            {
+                "name": "ARM64 Release Publish, Launch, and Attach Debugger",
+                "env": {
+                    "IOT_HUB_CONNECTION_STRING": ""
+                },
+                "type": "coreclr",
+                "request": "launch",
+                "preLaunchTask": "ARM64ReleasePublish",
+                "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
+                "cwd": "~/${workspaceFolderBasename}",
+                "stopAtEntry": false,
+                "console": "internalConsole",
+                "pipeTransport": {
+                    "pipeCwd": "${workspaceRoot}",
+                    "pipeProgram": "/usr/bin/ssh",
+                    "pipeArgs": [
+                        "user@host"
                     ],
                     "debuggerPath": "~/vsdbg/vsdbg"
                 }
@@ -267,7 +325,7 @@ The launch configuration is responsible for calling the build task, and instruct
     }
     ```
 
-4. If you renamed your Raspberry Pi you will need to update the launch.json file with the name or IP address of your Raspberry Pi. [Find and Replace](https://code.visualstudio.com/docs/editor/codebasics?WT.mc_id=julyot-dnc-dglover) **raspberrypi.local** with the host name or IP address of your Raspberry.
+4. [Find and Replace](https://code.visualstudio.com/docs/editor/codebasics?WT.mc_id=julyot-dnc-dglover) **user@host** with the your user name and host name (or IP address of your Raspberry).
 
 ### Set the tasks.json configuration
 
@@ -282,20 +340,50 @@ The build task is responsible for compiling the application and copying the code
         "version": "2.0.0",
         "tasks": [
             {
-                "label": "RaspberryPublish",
+                "label": "ARM32DebugPublish",
                 "command": "sh",
                 "type": "shell",
                 "problemMatcher": "$msCompile",
                 "args": [
                     "-c",
-                    "\"dotnet publish -r linux-arm -c Debug -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ pi@raspberrypi.local:~/${workspaceFolderBasename}\"",
+                    "\"dotnet publish -r linux-arm -c Debug -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ user@host:~/${workspaceFolderBasename}\"",
+                ]
+            },
+            {
+                "label": "ARM32ReleasePublish",
+                "command": "sh",
+                "type": "shell",
+                "problemMatcher": "$msCompile",
+                "args": [
+                    "-c",
+                    "\"dotnet publish -r linux-arm -c Release -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ user@host:~/${workspaceFolderBasename}\"",
+                ]
+            },
+            {
+                "label": "ARM64DebugPublish",
+                "command": "sh",
+                "type": "shell",
+                "problemMatcher": "$msCompile",
+                "args": [
+                    "-c",
+                    "\"dotnet publish -r linux-arm64 -c Debug -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ user@host:~/${workspaceFolderBasename}\"",
+                ]
+            },
+            {
+                "label": "ARM64ReleasePublish",
+                "command": "sh",
+                "type": "shell",
+                "problemMatcher": "$msCompile",
+                "args": [
+                    "-c",
+                    "\"dotnet publish -r linux-arm64 -c Release -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ user@host:~/${workspaceFolderBasename}\"",
                 ]
             }
         ]
     }
     ```
 
-4. If you renamed your Raspberry Pi you will need to update the tasks.json file with the name or IP address of your Raspberry Pi. [Find and Replace](https://code.visualstudio.com/docs/editor/codebasics?WT.mc_id=julyot-dnc-dglover) **raspberrypi.local** with the host name or IP address of your Raspberry.
+4. [Find and Replace](https://code.visualstudio.com/docs/editor/codebasics?WT.mc_id=julyot-dnc-dglover) **raspberrypi.local** with the host name or IP address of your Raspberry.
 
 ---
 
@@ -421,27 +509,4 @@ Press F5 to run the current 'Publish, Launch, and Attach Debugger' build task.
 
 ---
 
-## Quick Notes
-
-Using the new built in Windows OpenSSH client. Windows 10 1809+
-
-Install OpenSSH Client on Windows (one time only operation).
-
-From PowerShell as Administrator
-
-```bash
-Add-WindowsCapability -Online -Name OpenSSH.Client
-```
-
-Close PowerShell and reopen as **non administrator** user.
-
-
-```bash
-ssh-keygen -t rsa ; `
-cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 "mkdir ~/.ssh; cat >> ~/.ssh/authorized_keys"
-```
-
-References
-
-- [Is there an equivalent to ssh-copy-id for Windows?](https://serverfault.com/questions/224810/is-there-an-equivalent-to-ssh-copy-id-for-windows)
-- [Installation of OpenSSH For Windows Server 2019 and Windows 10](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?WT.mc_id=julyot-dnc-dglover)
+Finished
