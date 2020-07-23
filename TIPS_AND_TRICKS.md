@@ -1,5 +1,17 @@
 # Raspberry Pi Ubuntu 20.04 Tips and Tricks
 
+---
+
+## Rename the Ubuntu Hostname
+
+```bash
+sudo hostnamectl set-hostname new-name
+```
+
+Edit the /etc/hosts file and replace any references to the old hostname with the new host name.
+
+---
+
 ## Enable WiFi from Ubuntu 20.04
 
 To use WiFi 5G you must set the wireless central regulatory domain.
@@ -44,6 +56,8 @@ To use WiFi 5G you must set the wireless central regulatory domain.
                     "<Your wifi access point name>":
                         password: "<Your wifi access point password>"
     ```
+
+---
 
 ## Boot Ubuntu 20.04 from USB3 SSD
 
@@ -107,6 +121,8 @@ For now boot from USB3 SSD is not directly supported by Ubuntu 20.04. But you ca
     tmpfs             388436       0    388436   0% /run/user/1000
     ```
 
+---
+
 ## How to overclock your Raspberry Pi 4 from Ubuntu 20.04
 
 A great reference for this process is [How to overclock Raspberry Pi 4](https://magpi.raspberrypi.org/articles/how-to-overclock-raspberry-pi-4) MagPi article.
@@ -140,6 +156,8 @@ A great reference for this process is [How to overclock Raspberry Pi 4](https://
 sudo watch -n 1  cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_cur_freq
 ```
 
+---
+
 ## Raspberry Pi Sense Hat on Ubuntu 20.04
 
 1. Edit the usercfg.txt file
@@ -162,6 +180,8 @@ sudo watch -n 1  cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_cur_freq
     sudo reboot
     ```
 
+---
+
 ### Enable I2C Permissions
 
 You need to grant yourself permission to the /dev/i2c device.
@@ -175,6 +195,18 @@ sudo chmod g+rw /dev/i2c-1
 sudo usermod -aG i2c $USER
 ```
 
+Check permissions applied
+
+```bash
+ls i2c-1 -all
+```
+
+should look like he following
+
+```text
+crw-rw---- 1 root i2c 89, 1 Apr  1 17:23 i2c-1
+```
+
 #### Grant permission to the I2C bus
 
 ---
@@ -185,6 +217,8 @@ sudo usermod -aG i2c $USER
 sudo apt install docker.io 
 sudo usermod -aG docker $USER
 ```
+
+---
 
 ## Install MySql
 
