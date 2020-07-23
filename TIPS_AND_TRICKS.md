@@ -185,3 +185,8 @@ sudo usermod -aG i2c $USER
 sudo apt install docker.io 
 ```
 
+## Install MySql
+
+```bash
+docker run --name mysql1 -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD="<Your Password>" --restart always -p 3306:3306 -d mysql/mysql-server
+```
