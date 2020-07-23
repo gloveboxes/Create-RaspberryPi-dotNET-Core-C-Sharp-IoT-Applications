@@ -188,6 +188,26 @@ sudo usermod -aG docker $USER
 
 ## Install MySql
 
+[Docker Containers Tutorial – Persistent Storage Volumes and Stateful Containers](http://www.ethernetresearch.com/docker/docker-tutorial-persistent-storage-volumes-and-stateful-containers/)
+
+Create a new persistent storage volume in the Host Machine.
+
 ```bash
-docker run --name mysql1 -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD="<Your Password>" --restart always -p 3306:3306 -d mysql/mysql-server
+ docker volume create mysql-data
+ ```
+
+ Inspect the storage volume to get more detailed information.
+
+ ```bash
+ docker volume inspect mysql-data
+ ```
+
+ Check the data in the storage volume
+
+ ```bash
+ sudo s /var/lib/docker/volumes/mysql-data/_data
+ ```
+
+```bash
+docker run --name mysql1 -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD="<Your Password>" --restart always -p 3306:3306 -d mysql/mysql-server
 ```
