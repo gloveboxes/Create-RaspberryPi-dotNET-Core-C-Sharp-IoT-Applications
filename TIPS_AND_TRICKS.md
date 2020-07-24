@@ -1,5 +1,7 @@
 # Raspberry Pi Ubuntu 20.04 Tips and Tricks
 
+![](./resources/ubuntu_raspberrypi_tips_tricks.png)
+
 ---
 
 ## Rename the Ubuntu Hostname
