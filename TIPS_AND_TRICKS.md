@@ -160,6 +160,36 @@ sudo watch -n 1  cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_cur_freq
 
 ---
 
+## Autostart services with rc.local
+
+```bash
+sudo touch /etc/rc.local
+sudo chmod +x /etc/rc.local
+```
+
+Edit the /etc/rc.local and add the following text.
+
+```text
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+exit 0
+```
+
+
+
+---
+
 ## Raspberry Pi Sense Hat on Ubuntu 20.04
 
 1. Edit the usercfg.txt file
@@ -172,7 +202,6 @@ sudo watch -n 1  cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_cur_freq
 
     ```text
     hdmi_force_hotplug=1
-    dtparam=i2c_arm=on
     ```
 
 3. Save the changes. <kbd>ctrl+x</kbd>, follow prompts to save and overwrite existing file.
@@ -216,8 +245,7 @@ crw-rw---- 1 root i2c 89, 1 Apr  1 17:23 i2c-1
 ## Install Docker
 
 ```bash
-sudo apt install docker.io 
-sudo usermod -aG docker $USER
+sudo apt -y install docker.io && sudo usermod -aG docker $USER
 ```
 
 ---
