@@ -160,7 +160,7 @@ sudo watch -n 1  cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_cur_freq
 
 ---
 
-## Autostart services with rc.local
+## Autostart services with rc.local and systemd
 
 ```bash
 cat <<EOF | sudo tee /etc/rc.local
