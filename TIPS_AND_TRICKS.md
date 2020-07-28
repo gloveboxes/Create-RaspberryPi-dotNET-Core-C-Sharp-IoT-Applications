@@ -163,13 +163,7 @@ sudo watch -n 1  cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_cur_freq
 ## Autostart services with rc.local
 
 ```bash
-sudo touch /etc/rc.local
-sudo chmod +x /etc/rc.local
-```
-
-Edit the /etc/rc.local and add the following text.
-
-```text
+cat <<EOF | sudo tee /etc/rc.local
 #!/bin/sh -e
 #
 # rc.local
@@ -184,9 +178,12 @@ Edit the /etc/rc.local and add the following text.
 # By default this script does nothing.
 
 exit 0
+EOF
 ```
 
-
+```bash
+sudo chmod +x /etc/rc.local
+```
 
 ---
 
