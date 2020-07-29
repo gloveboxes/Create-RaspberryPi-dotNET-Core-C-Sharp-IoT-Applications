@@ -3,9 +3,6 @@
     "configurations": [
         {
             "name": "ARM32 Debug Publish, Launch, and Attach Debugger",
-            "env": {
-                "IOT_HUB_CONNECTION_STRING": ""
-            },
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "ARM32DebugPublish",
@@ -24,9 +21,6 @@
         },
         {
             "name": "ARM32 Release Publish, Launch, and Attach Debugger",
-            "env": {
-                "IOT_HUB_CONNECTION_STRING": ""
-            },
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "ARM32ReleasePublish",
@@ -45,9 +39,6 @@
         },
         {
             "name": "ARM64 Debug Publish, Launch, and Attach Debugger",
-            "env": {
-                "IOT_HUB_CONNECTION_STRING": ""
-            },
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "ARM64DebugPublish",
@@ -66,9 +57,6 @@
         },
         {
             "name": "ARM64 Release Publish, Launch, and Attach Debugger",
-            "env": {
-                "IOT_HUB_CONNECTION_STRING": ""
-            },
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "ARM64ReleasePublish",
