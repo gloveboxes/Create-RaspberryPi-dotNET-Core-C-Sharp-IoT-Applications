@@ -74,7 +74,7 @@ For now boot from USB3 SSD is not directly supported by Ubuntu 20.04. But you ca
     ```
 
     The default password is ubuntu.
-4. Connect the USB3 SSD drive to the Raspberry Pi. **WARNING**. The following process will delete all data from the Raspberry Pi.
+4. Connect the USB3 SSD drive to the Raspberry Pi. **WARNING**. The following process will delete all data from the USB3 SSD Drive.
 5. Run the following command on the Raspberry Pi.
 
     ```bash
@@ -266,7 +266,7 @@ Create a new persistent storage volume in the Host Machine.
  Check the data in the storage volume
 
  ```bash
- sudo s /var/lib/docker/volumes/mysql-data/_data
+ sudo ls /var/lib/docker/volumes/mysql-data/_data
  ```
 
 ```bash
