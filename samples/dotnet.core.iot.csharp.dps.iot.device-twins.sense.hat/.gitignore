@@ -14,7 +14,7 @@
 *.userprefs
 
 # Environment File
-.env
+#.env
 
 # Mono auto generated files
 mono_crash.*
