@@ -105,9 +105,19 @@ The following creates a new SSH key pair and copies the SSH public key to the Ra
 ### Install the Visual Studio Code .NET Debugger
 
 1. From the command prompt.
-3. Install the Visual Studio Code .NET Core Debugger on to the Raspberry Pi.
+2. Install the Visual Studio Code .NET Core Debugger on to the Raspberry Pi.
+3. Install the debugger that matches the operating system on your device. 
+
+#### ARM32
+
     ```bash
     ssh user@host "curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -r linux-arm -v latest -l ~/vsdbg"
+    ```
+
+#### ARM64
+
+    ```bash
+    ssh user@host "curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -r linux-arm64 -v latest -l ~/vsdbg"
     ```
 
 ---

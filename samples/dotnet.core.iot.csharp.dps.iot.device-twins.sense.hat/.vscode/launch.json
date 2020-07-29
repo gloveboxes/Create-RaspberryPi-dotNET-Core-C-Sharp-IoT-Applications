@@ -3,11 +3,9 @@
     "configurations": [
         {
             "name": "ARM32 Debug Publish, Launch, and Attach Debugger",
-            "env": {
-                "IOT_HUB_CONNECTION_STRING": ""
-            },
             "type": "coreclr",
             "request": "launch",
+            "envFile": "${workspaceFolder}/.env",
             "preLaunchTask": "ARM32DebugPublish",
             "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
             "cwd": "~/${workspaceFolderBasename}",
@@ -29,6 +27,7 @@
             },
             "type": "coreclr",
             "request": "launch",
+            "envFile": "${workspaceFolder}/.env",
             "preLaunchTask": "ARM32ReleasePublish",
             "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
             "cwd": "~/${workspaceFolderBasename}",
@@ -50,6 +49,7 @@
             },
             "type": "coreclr",
             "request": "launch",
+            "envFile": "${workspaceFolder}/.env",
             "preLaunchTask": "ARM64DebugPublish",
             "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
             "cwd": "~/${workspaceFolderBasename}",
@@ -71,6 +71,7 @@
             },
             "type": "coreclr",
             "request": "launch",
+            "envFile": "${workspaceFolder}/.env",
             "preLaunchTask": "ARM64ReleasePublish",
             "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
             "cwd": "~/${workspaceFolderBasename}",
