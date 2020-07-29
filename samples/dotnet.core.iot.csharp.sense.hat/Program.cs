@@ -62,7 +62,6 @@ namespace dotnet.core.iot
         // https://github.com/pimoroni/unicorn-hat/blob/master/examples/rainbow.py
         static void Rainbow()
         {
-            const double intensity = 0.4;
             const int width = 8;
             const int height = 8;
             Color[] data = new Color[width * height];
@@ -78,9 +77,9 @@ namespace dotnet.core.iot
                 {
                     for (int x = 0; x < height; x++)
                     {
-                        var r = (Math.Cos((x + i) / 2.0) + Math.Cos((y + i) / 2.0)) * 96.0 + 32.0;
-                        var g = (Math.Sin((x + i) / 1.5) + Math.Sin((y + i) / 2.0)) * 96.0 + 32.0;
-                        var b = (Math.Sin((x + i) / 2.0) + Math.Cos((y + i) / 1.5)) * 96.0 + 32.0;
+                        var r = (Math.Cos((x + i) / 2.0) + Math.Cos((y + i) / 2.0)) * 64.0 + 64.0;
+                        var g = (Math.Sin((x + i) / 1.5) + Math.Sin((y + i) / 2.0)) * 64.0 + 64.0;
+                        var b = (Math.Sin((x + i) / 2.0) + Math.Cos((y + i) / 1.5)) * 64.0 + 64.0;
 
                         r = Math.Max(0, Math.Min(255, r + offset));
                         g = Math.Max(0, Math.Min(255, g + offset));
