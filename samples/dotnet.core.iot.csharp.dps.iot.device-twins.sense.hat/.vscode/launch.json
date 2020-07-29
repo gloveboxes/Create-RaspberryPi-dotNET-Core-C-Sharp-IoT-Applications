@@ -22,9 +22,6 @@
         },
         {
             "name": "ARM32 Release Publish, Launch, and Attach Debugger",
-            "env": {
-                "IOT_HUB_CONNECTION_STRING": ""
-            },
             "type": "coreclr",
             "request": "launch",
             "envFile": "${workspaceFolder}/.env",
@@ -44,9 +41,6 @@
         },
         {
             "name": "ARM64 Debug Publish, Launch, and Attach Debugger",
-            "env": {
-                "IOT_HUB_CONNECTION_STRING": ""
-            },
             "type": "coreclr",
             "request": "launch",
             "envFile": "${workspaceFolder}/.env",
@@ -66,9 +60,6 @@
         },
         {
             "name": "ARM64 Release Publish, Launch, and Attach Debugger",
-            "env": {
-                "IOT_HUB_CONNECTION_STRING": ""
-            },
             "type": "coreclr",
             "request": "launch",
             "envFile": "${workspaceFolder}/.env",
