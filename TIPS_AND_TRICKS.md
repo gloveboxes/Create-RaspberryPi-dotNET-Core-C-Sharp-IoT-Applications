@@ -266,7 +266,7 @@ Create a new persistent storage volume in the Host Machine.
  Check the data in the storage volume
 
  ```bash
- sudo s /var/lib/docker/volumes/mysql-data/_data
+ sudo ls /var/lib/docker/volumes/mysql-data/_data
  ```
 
 ```bash
