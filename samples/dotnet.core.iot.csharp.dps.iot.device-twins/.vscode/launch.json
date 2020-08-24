@@ -12,6 +12,7 @@
             "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
             "cwd": "~/${workspaceFolderBasename}",
             "stopAtEntry": false,
+            "envFile": "${workspaceFolder}/.env",
             "console": "internalConsole",
             "pipeTransport": {
                 "pipeCwd": "${workspaceRoot}",
@@ -33,6 +34,7 @@
             "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
             "cwd": "~/${workspaceFolderBasename}",
             "stopAtEntry": false,
+            "envFile": "${workspaceFolder}/.env",
             "console": "internalConsole",
             "pipeTransport": {
                 "pipeCwd": "${workspaceRoot}",
@@ -54,6 +56,7 @@
             "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
             "cwd": "~/${workspaceFolderBasename}",
             "stopAtEntry": false,
+            "envFile": "${workspaceFolder}/.env",
             "console": "internalConsole",
             "pipeTransport": {
                 "pipeCwd": "${workspaceRoot}",
@@ -75,6 +78,7 @@
             "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
             "cwd": "~/${workspaceFolderBasename}",
             "stopAtEntry": false,
+            "envFile": "${workspaceFolder}/.env",
             "console": "internalConsole",
             "pipeTransport": {
                 "pipeCwd": "${workspaceRoot}",
