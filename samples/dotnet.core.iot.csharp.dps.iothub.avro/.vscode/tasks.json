@@ -1,0 +1,51 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "IntelBuild",
+            "type": "shell",   
+            "command": "dotnet build",         
+            "problemMatcher": "$msCompile",
+        },
+        {
+            "label": "ARM32DebugPublish",
+            "command": "sh",
+            "type": "shell",
+            "problemMatcher": "$msCompile",
+            "args": [
+                "-c",
+                "\"dotnet publish -r linux-arm -c Debug -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ user@host:~/${workspaceFolderBasename}\"",
+            ]
+        },
+        {
+            "label": "ARM32ReleasePublish",
+            "command": "sh",
+            "type": "shell",
+            "problemMatcher": "$msCompile",
+            "args": [
+                "-c",
+                "\"dotnet publish -r linux-arm -c Release -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ user@host:~/${workspaceFolderBasename}\"",
+            ]
+        },
+        {
+            "label": "ARM64DebugPublish",
+            "command": "sh",
+            "type": "shell",
+            "problemMatcher": "$msCompile",
+            "args": [
+                "-c",
+                "\"dotnet publish -r linux-arm64 -c Debug -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ user@host:~/${workspaceFolderBasename}\"",
+            ]
+        },
+        {
+            "label": "ARM64ReleasePublish",
+            "command": "sh",
+            "type": "shell",
+            "problemMatcher": "$msCompile",
+            "args": [
+                "-c",
+                "\"dotnet publish -r linux-arm64 -c Release -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ user@host:~/${workspaceFolderBasename}\"",
+            ]
+        }
+    ]
+}
