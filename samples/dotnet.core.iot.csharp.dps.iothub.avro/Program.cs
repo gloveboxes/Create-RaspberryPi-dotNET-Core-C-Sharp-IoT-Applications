@@ -1,4 +1,29 @@
-﻿using System;
+﻿/**************************************************************************************************** 
+
+Author: Dave Glover
+Date: Aug 2020
+
+References:
+
+Azure IoT C# SDK Samples    https://github.com/Azure-Samples/azure-iot-samples-csharp
+AVRO Serialiser             https://github.com/AdrianStrugala/AvroConvert/blob/master/docs/Documentation.md
+System Drawing Libraries    https://github.com/dotnet/runtime/issues/27200
+
+// gets AVRO Schema
+static string avroTelemetrySchema = AvroConvert.GenerateSchema(typeof(TelemetryAvro));
+
+
+Libraries:
+
+This sample was tested on Windows, macOS, Ubuntu 20.04 on x64, and Ubuntu 20.04 on Raspberry Pi
+
+On Linux, the following library must be installed for System.Drawing
+
+sudo apt install libgdiplus
+
+****************************************************************************************************/
+
+using System;
 using System.Drawing;
 using System.IO;
 using System.Text;
@@ -11,26 +36,6 @@ using Microsoft.Azure.Devices.Shared;
 using Iot.Device.CpuTemperature;
 using Newtonsoft.Json;
 using SolTechnology.Avro;
-
-
-/* References
-
-Azure IoT C# SDK Samples    https://github.com/Azure-Samples/azure-iot-samples-csharp
-AVRO Serialiser             https://github.com/AdrianStrugala/AvroConvert/blob/master/docs/Documentation.md
-System Drawing Libraries    https://github.com/dotnet/runtime/issues/27200
-
-// gets AVRO Schema
-static string avroTelemetrySchema = AvroConvert.GenerateSchema(typeof(TelemetryAvro));
-
-*/
-
-/*
-This sample was tested on Ubuntu 20.04 on Raspberry Pi
-Must install the following libraries. Required for System.Drawing
-
-sudo apt install libgdiplus
-
-*/
 
 
 namespace DotNet.Core.IotHub.Avro
@@ -88,6 +93,8 @@ namespace DotNet.Core.IotHub.Avro
                                     Humidity = 50,
                                     Pressure = 1100,
                                     MsgId = msgId,
+                                    Label = "Orange",
+                                    Probability = 1.0,
                                     Image = ms.ToArray()
                                 };
 

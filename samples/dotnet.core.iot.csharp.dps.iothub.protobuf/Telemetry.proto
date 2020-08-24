@@ -7,5 +7,7 @@ message TelemetryProtobuf {
   double humidity=2;
   double pressure=3;
   int32 msgId=4;
-  bytes image=5;
+  string label=5;
+  double probability=6;
+  bytes image=7;
 }

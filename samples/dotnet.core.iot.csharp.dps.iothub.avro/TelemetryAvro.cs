@@ -15,7 +15,13 @@ namespace DotNet.Core.IotHub.Avro
         public double Pressure { get; set; }
 
         [DataMember(Name = "msgId")]
-        public double MsgId { get; set; }
+        public int MsgId { get; set; }
+
+        [DataMember(Name = "label")]
+        public string Label { get; set; }
+
+        [DataMember(Name = "probability")]
+        public double Probability { get; set; }
 
         [DataMember(Name = "image")]
         public byte[] Image { get; set; }

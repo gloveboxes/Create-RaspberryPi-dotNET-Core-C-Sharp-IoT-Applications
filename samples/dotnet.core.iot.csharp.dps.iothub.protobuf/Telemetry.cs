@@ -22,14 +22,15 @@ namespace DotNet.Core.IotHub.Models.Protobuf {
     static TelemetryReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg9UZWxlbWV0cnkucHJvdG8iagoRVGVsZW1ldHJ5UHJvdG9idWYSEwoLdGVt",
-            "cGVyYXR1cmUYASABKAESEAoIaHVtaWRpdHkYAiABKAESEAoIcHJlc3N1cmUY",
-            "AyABKAESDQoFbXNnSWQYBCABKAUSDQoFaW1hZ2UYBSABKAxCJaoCIkRvdE5l",
-            "dC5Db3JlLklvdEh1Yi5Nb2RlbHMuUHJvdG9idWZiBnByb3RvMw=="));
+            "Cg9UZWxlbWV0cnkucHJvdG8ijgEKEVRlbGVtZXRyeVByb3RvYnVmEhMKC3Rl",
+            "bXBlcmF0dXJlGAEgASgBEhAKCGh1bWlkaXR5GAIgASgBEhAKCHByZXNzdXJl",
+            "GAMgASgBEg0KBW1zZ0lkGAQgASgFEg0KBWxhYmVsGAUgASgJEhMKC3Byb2Jh",
+            "YmlsaXR5GAYgASgBEg0KBWltYWdlGAcgASgMQiWqAiJEb3ROZXQuQ29yZS5J",
+            "b3RIdWIuTW9kZWxzLlByb3RvYnVmYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::DotNet.Core.IotHub.Models.Protobuf.TelemetryProtobuf), global::DotNet.Core.IotHub.Models.Protobuf.TelemetryProtobuf.Parser, new[]{ "Temperature", "Humidity", "Pressure", "MsgId", "Image" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::DotNet.Core.IotHub.Models.Protobuf.TelemetryProtobuf), global::DotNet.Core.IotHub.Models.Protobuf.TelemetryProtobuf.Parser, new[]{ "Temperature", "Humidity", "Pressure", "MsgId", "Label", "Probability", "Image" }, null, null, null)
           }));
     }
     #endregion
@@ -64,6 +65,8 @@ namespace DotNet.Core.IotHub.Models.Protobuf {
       humidity_ = other.humidity_;
       pressure_ = other.pressure_;
       msgId_ = other.msgId_;
+      label_ = other.label_;
+      probability_ = other.probability_;
       image_ = other.image_;
     }
 
@@ -116,8 +119,30 @@ namespace DotNet.Core.IotHub.Models.Protobuf {
       }
     }
 
+    /// <summary>Field number for the "label" field.</summary>
+    public const int LabelFieldNumber = 5;
+    private string label_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Label {
+      get { return label_; }
+      set {
+        label_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "probability" field.</summary>
+    public const int ProbabilityFieldNumber = 6;
+    private double probability_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public double Probability {
+      get { return probability_; }
+      set {
+        probability_ = value;
+      }
+    }
+
     /// <summary>Field number for the "image" field.</summary>
-    public const int ImageFieldNumber = 5;
+    public const int ImageFieldNumber = 7;
     private pb::ByteString image_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pb::ByteString Image {
@@ -144,6 +169,8 @@ namespace DotNet.Core.IotHub.Models.Protobuf {
       if (Humidity != other.Humidity) return false;
       if (Pressure != other.Pressure) return false;
       if (MsgId != other.MsgId) return false;
+      if (Label != other.Label) return false;
+      if (Probability != other.Probability) return false;
       if (Image != other.Image) return false;
       return true;
     }
@@ -155,6 +182,8 @@ namespace DotNet.Core.IotHub.Models.Protobuf {
       if (Humidity != 0D) hash ^= Humidity.GetHashCode();
       if (Pressure != 0D) hash ^= Pressure.GetHashCode();
       if (MsgId != 0) hash ^= MsgId.GetHashCode();
+      if (Label.Length != 0) hash ^= Label.GetHashCode();
+      if (Probability != 0D) hash ^= Probability.GetHashCode();
       if (Image.Length != 0) hash ^= Image.GetHashCode();
       return hash;
     }
@@ -182,8 +211,16 @@ namespace DotNet.Core.IotHub.Models.Protobuf {
         output.WriteRawTag(32);
         output.WriteInt32(MsgId);
       }
-      if (Image.Length != 0) {
+      if (Label.Length != 0) {
         output.WriteRawTag(42);
+        output.WriteString(Label);
+      }
+      if (Probability != 0D) {
+        output.WriteRawTag(49);
+        output.WriteDouble(Probability);
+      }
+      if (Image.Length != 0) {
+        output.WriteRawTag(58);
         output.WriteBytes(Image);
       }
     }
@@ -202,6 +239,12 @@ namespace DotNet.Core.IotHub.Models.Protobuf {
       }
       if (MsgId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(MsgId);
+      }
+      if (Label.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Label);
+      }
+      if (Probability != 0D) {
+        size += 1 + 8;
       }
       if (Image.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(Image);
@@ -225,6 +268,12 @@ namespace DotNet.Core.IotHub.Models.Protobuf {
       }
       if (other.MsgId != 0) {
         MsgId = other.MsgId;
+      }
+      if (other.Label.Length != 0) {
+        Label = other.Label;
+      }
+      if (other.Probability != 0D) {
+        Probability = other.Probability;
       }
       if (other.Image.Length != 0) {
         Image = other.Image;
@@ -256,6 +305,14 @@ namespace DotNet.Core.IotHub.Models.Protobuf {
             break;
           }
           case 42: {
+            Label = input.ReadString();
+            break;
+          }
+          case 49: {
+            Probability = input.ReadDouble();
+            break;
+          }
+          case 58: {
             Image = input.ReadBytes();
             break;
           }
