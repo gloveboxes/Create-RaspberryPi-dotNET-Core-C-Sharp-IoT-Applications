@@ -15,7 +15,7 @@ Generate protobuf class:
 
 https://docs.microsoft.com/en-us/azure/iot-accelerators/iot-accelerators-device-simulation-protobuf#generate-the-protobuf-class
 
-protoc -I . --csharp_out=. Telemetry.proto
+protoc -I . --csharp_out=. TelemetryProtobuf.proto
 
 Libraries:
 
@@ -96,7 +96,8 @@ namespace DotNet.Core.IotHub.Protobuf
                                     MsgId = msgId,
                                     Label = "Orange",
                                     Probability = 1.0,
-                                    Image = ByteString.CopyFrom(ms.ToArray())
+                                    Image = ByteString.CopyFrom(ms.ToArray()),
+                                    DeviceId = string.Empty     // this is set in the azure function when writing to cosmosdb
                                 };
 
                                 using (MemoryStream memStream = new MemoryStream())
@@ -126,6 +127,7 @@ namespace DotNet.Core.IotHub.Protobuf
 
             Message eventMessage = new Message(Encoding.UTF8.GetBytes(json));
             eventMessage.Properties.Add("appid", "hvac");
+            eventMessage.Properties.Add("type", "telemetry");
             eventMessage.Properties.Add("format", "json");
             eventMessage.Properties.Add("msgid", msgId.ToString());
 
@@ -135,7 +137,8 @@ namespace DotNet.Core.IotHub.Protobuf
         private static async Task SendMsgIotHub(DeviceClient iotClient, byte[] telemetry)
         {
             Message eventMessage = new Message(telemetry);
-            eventMessage.Properties.Add("appid", "hvac");
+            eventMessage.Properties.Add("appid", "qa-score");
+            eventMessage.Properties.Add("type", "telemetry");
             eventMessage.Properties.Add("format", "protobuf");
             eventMessage.Properties.Add("msgid", msgId.ToString());
 

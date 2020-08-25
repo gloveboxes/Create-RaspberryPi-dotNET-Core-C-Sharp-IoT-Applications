@@ -95,7 +95,8 @@ namespace DotNet.Core.IotHub.Avro
                                     MsgId = msgId,
                                     Label = "Orange",
                                     Probability = 1.0,
-                                    Image = ms.ToArray()
+                                    Image = ms.ToArray(),
+                                    DeviceId = string.Empty     // this is set in the azure function when writing to cosmosdb
                                 };
 
                                 var serialized = AvroConvert.SerializeHeadless(telemetryAvro, avroTelemetrySchema);
@@ -115,7 +116,7 @@ namespace DotNet.Core.IotHub.Avro
                         {
                             Console.WriteLine("exception msg: " + ex.Message);
                         }
-                        Thread.Sleep(4000); // sleep for 10 seconds
+                        // Thread.Sleep(4000);
                     }
                 }
             }
@@ -128,6 +129,7 @@ namespace DotNet.Core.IotHub.Avro
 
             Message eventMessage = new Message(Encoding.UTF8.GetBytes(json));
             eventMessage.Properties.Add("appid", "hvac");
+            eventMessage.Properties.Add("type", "telemetry");
             eventMessage.Properties.Add("format", "json");
             eventMessage.Properties.Add("msgid", msgId.ToString());
 
@@ -137,7 +139,8 @@ namespace DotNet.Core.IotHub.Avro
         private static async Task SendMsgIotHub(DeviceClient iotClient, byte[] telemetry)
         {
             Message eventMessage = new Message(telemetry);
-            eventMessage.Properties.Add("appid", "hvac");
+            eventMessage.Properties.Add("appid", "qa-score");
+            eventMessage.Properties.Add("type", "telemetry");
             eventMessage.Properties.Add("format", "avro");
             eventMessage.Properties.Add("msgid", msgId.ToString());
 

@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "PACKAGING_QA_TELEMETRY_AVRO_EVENTHUB": "",
+    "PACKAGING_QA_TELEMETRY_PROTOBUF_EVENTHUB": "",    
+    "FACTORY_COSMOS_DB": ""
+  }
+}

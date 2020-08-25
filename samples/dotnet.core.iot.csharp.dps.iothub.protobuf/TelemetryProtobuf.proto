@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "DotNet.Core.IotHub.Models.Protobuf";
+
+message TelemetryProtobuf {
+  string deviceId=1;
+  double temperature=2;
+  double humidity=3;
+  double pressure=4;
+  int32 msgId=5;
+  string label=6;
+  double probability=7;
+  bytes image=8;
+}

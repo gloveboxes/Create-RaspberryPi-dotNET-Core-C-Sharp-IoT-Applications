@@ -7,7 +7,7 @@ namespace DotNet.Core.IotHub.Avro
     {
         [DataMember(Name = "deviceId")]
         public string DeviceId { get; set; }
-
+        
         [DataMember(Name = "temperature")]
         public double Temperature { get; set; }
 
