@@ -118,7 +118,7 @@ namespace DotNet.Core.IotHub.Avro
                         {
                             Console.WriteLine("exception msg: " + ex.Message);
                         }
-                        // Thread.Sleep(4000);
+                        Thread.Sleep(4000);
                     }
                 }
             }
