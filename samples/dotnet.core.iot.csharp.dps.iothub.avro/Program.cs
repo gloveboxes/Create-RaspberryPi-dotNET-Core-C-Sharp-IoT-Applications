@@ -110,6 +110,8 @@ namespace DotNet.Core.IotHub.Avro
 
                                 await SendMsgIotHub(iotClient, serialized);
 
+                                await SendMsgIotHub(iotClient, temperature);
+
                             }
                         }
                         catch (Exception ex)
@@ -130,6 +132,7 @@ namespace DotNet.Core.IotHub.Avro
             Message eventMessage = new Message(Encoding.UTF8.GetBytes(json));
             eventMessage.Properties.Add("appid", "hvac");
             eventMessage.Properties.Add("type", "telemetry");
+            eventMessage.Properties.Add("version", "1");
             eventMessage.Properties.Add("format", "json");
             eventMessage.Properties.Add("msgid", msgId.ToString());
 
@@ -141,7 +144,8 @@ namespace DotNet.Core.IotHub.Avro
             Message eventMessage = new Message(telemetry);
             eventMessage.Properties.Add("appid", "qa-score");
             eventMessage.Properties.Add("type", "telemetry");
-            eventMessage.Properties.Add("format", "avro");
+            eventMessage.Properties.Add("version", "1");
+            eventMessage.Properties.Add("format", "avro");            
             eventMessage.Properties.Add("msgid", msgId.ToString());
 
             await iotClient.SendEventAsync(eventMessage).ConfigureAwait(false);

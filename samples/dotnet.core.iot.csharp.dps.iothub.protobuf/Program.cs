@@ -108,6 +108,8 @@ namespace DotNet.Core.IotHub.Protobuf
                                     // Deserialise Protobuf
                                     // var newTpb = TelemetryProtobuf.Parser.ParseFrom(memStream.ToArray());
                                 }
+
+                                await SendMsgIotHub(iotClient, temperature);
                             }
                         }
                         catch (Exception ex)
@@ -128,6 +130,7 @@ namespace DotNet.Core.IotHub.Protobuf
             Message eventMessage = new Message(Encoding.UTF8.GetBytes(json));
             eventMessage.Properties.Add("appid", "hvac");
             eventMessage.Properties.Add("type", "telemetry");
+            eventMessage.Properties.Add("version", "1");
             eventMessage.Properties.Add("format", "json");
             eventMessage.Properties.Add("msgid", msgId.ToString());
 
@@ -139,6 +142,7 @@ namespace DotNet.Core.IotHub.Protobuf
             Message eventMessage = new Message(telemetry);
             eventMessage.Properties.Add("appid", "qa-score");
             eventMessage.Properties.Add("type", "telemetry");
+            eventMessage.Properties.Add("version", "1");
             eventMessage.Properties.Add("format", "protobuf");
             eventMessage.Properties.Add("msgid", msgId.ToString());
 
