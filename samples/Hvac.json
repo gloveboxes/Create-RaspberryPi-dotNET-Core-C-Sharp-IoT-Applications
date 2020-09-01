@@ -1,0 +1,77 @@
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:Glovebox:Hvac;1",
+  "@type": "Interface",
+  "displayName": "Hvac",
+  "contents": [
+    {
+      "@type": "Telemetry",
+      "name": "Temperature",
+      "displayName": "Room temperature",
+      "schema": "double",
+      "unit": "Celsius"
+    },
+    {
+      "@type": "Telemetry",
+      "name": "Pressure",
+      "displayName": "Ambient air pressure",
+      "schema": "double",
+      "unit": "hPa"
+    },
+    {
+      "@type": "Telemetry",
+      "name": "Humidity",
+      "displayName": "Room humidity",
+      "schema": "double",
+      "unit": "%rH"
+    },
+    {
+      "@type": "Telemetry",
+      "name": "MsgId",
+      "schema": "integer",
+      "displayName": "Message ID",
+      "unit": "Count"
+    },
+    {
+      "@type": "Property",
+      "name": "RoomAction",
+      "schema": "string",
+      "displayName": "HVAC state",
+      "description": "HVAC state",
+      "unit": "Heating, Cooling, Green"
+    },
+    {
+      "@type": "Property",
+      "name": "RoomTemperature",
+      "schema": "double",
+      "displayName": "Current room temperature",
+      "description": "Last reported temperature",
+      "unit": "Celsius"
+    },
+    {
+      "@type": "Property",
+      "name": "Thermostat",
+      "schema": {
+        "@type": "Object",
+        "fields": [
+          {
+            "name": "value",
+            "schema": "integer"
+          }
+        ]
+      },
+      "displayName": "Desired room temperature",
+      "description": "Set room temperature",
+      "unit": "Celsius",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "ThermostatSetting",
+      "schema": "integer",
+      "displayName": "Current thermostat setting",
+      "description": "Last reported thermostat setting",
+      "unit": "Celsius"
+    }
+  ]
+}

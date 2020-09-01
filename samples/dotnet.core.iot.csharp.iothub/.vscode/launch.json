@@ -2,6 +2,17 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Desktop .NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "IntelBuild",
+            "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/${workspaceFolderBasename}.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
             "name": "ARM32 Debug Publish, Launch, and Attach Debugger",
             "env": {
                 "IOT_HUB_CONNECTION_STRING": ""

@@ -8,10 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-
-    <PackageReference Include="Iot.Device.Bindings" Version="1.1.0-prerelease.20153.1" />
+    <PackageReference Include="Iot.Device.Bindings" Version="1.1.0-prerelease.20276.1" />
     <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.*" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
 </Project>

@@ -2,6 +2,12 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "IntelBuild",
+            "type": "shell",   
+            "command": "dotnet build",         
+            "problemMatcher": "$msCompile",
+        },
+        {
             "label": "ARM32DebugPublish",
             "command": "sh",
             "type": "shell",
