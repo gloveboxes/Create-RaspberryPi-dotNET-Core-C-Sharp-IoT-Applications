@@ -69,10 +69,18 @@ namespace dotnet.core.iot
 
         private static async Task SendMsgIotHub(double temperature, double humidity, double pressure)
         {
-            var telemetry = new Telemetry() { Temperature = temperature, Humidity = humidity, Pressure=pressure, MessageId = _msgId++ };
+            var telemetry = new Telemetry() { Temperature = temperature, Humidity = humidity, Pressure = pressure, MessageId = _msgId++ };
             string json = JsonConvert.SerializeObject(telemetry);
 
             Message eventMessage = new Message(Encoding.UTF8.GetBytes(json));
+
+            // add application property message metadata
+            eventMessage.Properties.Add("appid", "hvac");
+            eventMessage.Properties.Add("type", "telemetry");
+            eventMessage.Properties.Add("version", "1");
+            eventMessage.Properties.Add("format", "json");
+            eventMessage.Properties.Add("msgid", _msgId.ToString());
+            eventMessage.Properties.Add("temperatureAlert", (temperature > thermostat) ? "true" : "false");
 
             await iotClient.SendEventAsync(eventMessage).ConfigureAwait(false);
         }

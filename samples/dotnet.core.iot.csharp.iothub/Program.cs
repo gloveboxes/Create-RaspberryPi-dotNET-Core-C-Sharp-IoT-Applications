@@ -21,7 +21,7 @@ namespace dotnet.core.iot
         static DeviceClient _deviceClient = DeviceClient.CreateFromConnectionString(DeviceConnectionString, TransportType.Mqtt, options);
         static CpuTemperature _temperature = new CpuTemperature();
         static int _msgId = 0;
-        const double TemperatureThreshold = 42.0;
+        static double thermostat = 42.0;
 
         static async Task Main(string[] args)
         {
@@ -50,7 +50,14 @@ namespace dotnet.core.iot
             string json = JsonConvert.SerializeObject(telemetry);
 
             Message eventMessage = new Message(Encoding.UTF8.GetBytes(json));
-            eventMessage.Properties.Add("temperatureAlert", (temperature > TemperatureThreshold) ? "true" : "false");
+
+            // add application property message metadata
+            eventMessage.Properties.Add("appid", "hvac");
+            eventMessage.Properties.Add("type", "telemetry");
+            eventMessage.Properties.Add("version", "1");
+            eventMessage.Properties.Add("format", "json");
+            eventMessage.Properties.Add("msgid", _msgId.ToString());
+            eventMessage.Properties.Add("temperatureAlert", (temperature > thermostat) ? "true" : "false");
 
             await _deviceClient.SendEventAsync(eventMessage).ConfigureAwait(false);
         }
