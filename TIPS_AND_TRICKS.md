@@ -212,6 +212,28 @@ sudo chmod +x /etc/rc.local
 
 ### Enable I2C Permissions
 
+[How can I set device rw permissions permanently on Raspbian?](https://unix.stackexchange.com/questions/147494/how-can-i-set-device-rw-permissions-permanently-on-raspbian)
+
+Works on Raspberry Pi OS and Ubuntu 20.04. Grants permissions to the I2C bus for all users.
+
+```bash
+cd /etc/udev/rules.d
+```
+
+create an i2c rules file.
+
+```bash
+sudo nano i2c.rules
+```
+
+add the following to the new rules file. Then save and reboot.
+
+```text
+ACTION=="add", KERNEL=="i2c-[0-1]*", MODE="0666"
+```
+
+<!-- 
+
 You need to grant yourself permission to the /dev/i2c device.
 
 ```bash
@@ -238,7 +260,7 @@ should look like he following
 
 ```text
 crw-rw---- 1 root i2c 89, 1 Apr  1 17:23 i2c-1
-```
+``` -->
 
 ---
 
