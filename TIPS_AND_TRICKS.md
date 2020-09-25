@@ -247,6 +247,66 @@ sudo apt -y install docker.io && sudo usermod -aG docker $USER
 
 ---
 
+## Install Azure SQL Edge with Docker
+
+### Learn more about Azure SQL Edge
+
+[Azure SQL Edge documentation](https://docs.microsoft.com/en-us/azure/azure-sql-edge/)
+
+### Learn about Docker persistent storage volumes
+
+[Docker Containers Tutorial – Persistent Storage Volumes and Stateful Containers](http://www.ethernetresearch.com/docker/docker-tutorial-persistent-storage-volumes-and-stateful-containers/)
+
+### Create Docker Data Volume
+
+Create a new persistent storage volume in the Host Machine.
+
+```bash
+docker volume create azure-sql-edge-data
+```
+
+Inspect the storage volume to get more detailed information.
+
+```bash
+docker volume inspect azure-sql-edge-data
+```
+
+Check the data in the storage volume
+
+```bash
+sudo ls /var/lib/docker/volumes/azure-sql-edge-data/_data
+```
+
+Remove a docker data volume
+
+```bash
+ docker volume rm azure-sql-edge-data
+```
+
+### Start Azure SQL Edge
+
+```bash
+docker run --cap-add SYS_PTRACE -e 'ACCEPT_EULA=1' -e 'MSSQL_SA_PASSWORD=<Your password>' --restart always -p 1433:1433 --name azuresqledge  -v azure-sql-edge-data:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge
+```
+
+### Azure SQL Management Tools
+
+#### Windows only (Full featured)
+
+[SQL Server Management Studio](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
+
+#### Cross platform Linux, macOS, Windows (Lighter weight)
+
+[Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is?view=sql-server-ver15)
+
+### SQL Server Samples Databases
+
+Northwind is a great starting point
+
+[Northwind and pubs sample databases for Microsoft SQL Server](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/northwind-pubs)
+
+---
+
 ## Install MySql
 
 [Docker Containers Tutorial – Persistent Storage Volumes and Stateful Containers](http://www.ethernetresearch.com/docker/docker-tutorial-persistent-storage-volumes-and-stateful-containers/)
@@ -254,20 +314,20 @@ sudo apt -y install docker.io && sudo usermod -aG docker $USER
 Create a new persistent storage volume in the Host Machine.
 
 ```bash
- docker volume create mysql-data
- ```
+docker volume create mysql-data
+```
 
- Inspect the storage volume to get more detailed information.
+Inspect the storage volume to get more detailed information.
 
- ```bash
- docker volume inspect mysql-data
- ```
+```bash
+docker volume inspect mysql-data
+```
 
- Check the data in the storage volume
+Check the data in the storage volume
 
- ```bash
- sudo ls /var/lib/docker/volumes/mysql-data/_data
- ```
+```bash
+sudo ls /var/lib/docker/volumes/mysql-data/_data
+```
 
 ```bash
 docker run --name mysql1 -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD="<Your Password>" --restart always -p 3306:3306 -d mysql/mysql-server

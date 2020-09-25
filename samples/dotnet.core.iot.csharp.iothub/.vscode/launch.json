@@ -9,6 +9,7 @@
             "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/${workspaceFolderBasename}.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
+            "envFile": "${workspaceFolder}/.env",
             "stopAtEntry": false,
             "console": "internalConsole"
         },
@@ -22,6 +23,7 @@
             "preLaunchTask": "ARM32DebugPublish",
             "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
             "cwd": "~/${workspaceFolderBasename}",
+            "envFile": "${workspaceFolder}/.env",
             "stopAtEntry": false,
             "console": "internalConsole",
             "pipeTransport": {
@@ -43,6 +45,7 @@
             "preLaunchTask": "ARM32ReleasePublish",
             "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
             "cwd": "~/${workspaceFolderBasename}",
+            "envFile": "${workspaceFolder}/.env",
             "stopAtEntry": false,
             "console": "internalConsole",
             "pipeTransport": {
@@ -64,6 +67,7 @@
             "preLaunchTask": "ARM64DebugPublish",
             "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
             "cwd": "~/${workspaceFolderBasename}",
+            "envFile": "${workspaceFolder}/.env",
             "stopAtEntry": false,
             "console": "internalConsole",
             "pipeTransport": {
@@ -85,6 +89,7 @@
             "preLaunchTask": "ARM64ReleasePublish",
             "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
             "cwd": "~/${workspaceFolderBasename}",
+            "envFile": "${workspaceFolder}/.env",
             "stopAtEntry": false,
             "console": "internalConsole",
             "pipeTransport": {

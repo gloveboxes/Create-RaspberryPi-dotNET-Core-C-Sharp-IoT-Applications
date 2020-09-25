@@ -10,7 +10,7 @@ namespace dotnet.core.iot
 {
     class Program
     {
-        const string DeviceConnectionString = "<Your Azure IoT Hub Connection String>";
+        static string DeviceConnectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
 
         // https://github.com/Azure/opendigitaltwins-dtdl
         // https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#telemetry
@@ -40,7 +40,7 @@ namespace dotnet.core.iot
 
                 await SendMsgIotHub(temperature, humidity, pressure);
 
-                Thread.Sleep(4000); // sleep for 4 seconds
+                Thread.Sleep(2000); // sleep for 2 seconds
             }
         }
 
@@ -56,8 +56,6 @@ namespace dotnet.core.iot
             eventMessage.Properties.Add("type", "telemetry");
             eventMessage.Properties.Add("version", "1");
             eventMessage.Properties.Add("format", "json");
-            eventMessage.Properties.Add("msgid", _msgId.ToString());
-            eventMessage.Properties.Add("temperatureAlert", (temperature > thermostat) ? "true" : "false");
 
             await _deviceClient.SendEventAsync(eventMessage).ConfigureAwait(false);
         }
