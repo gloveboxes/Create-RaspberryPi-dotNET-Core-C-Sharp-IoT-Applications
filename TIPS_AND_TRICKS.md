@@ -216,11 +216,16 @@ You need to grant yourself permission to the /dev/i2c device.
 
 ```bash
 sudo groupadd i2c
-
-# Allow all to have access to I2C
-sudo chown :i2c /dev/i2c-1
-sudo chmod g+rw /dev/i2c-1
 sudo usermod -aG i2c $USER
+```
+
+All the following lines to /etc/rc.local as these permissions do not seem to persist. See notes above to create rc.local autostart on Ubuntu.
+
+```bash
+# Allow all to have access to I2C
+chown :i2c /dev/i2c-1
+chmod g+rw /dev/i2c-1
+
 ```
 
 Check permissions applied
@@ -234,8 +239,6 @@ should look like he following
 ```text
 crw-rw---- 1 root i2c 89, 1 Apr  1 17:23 i2c-1
 ```
-
-#### Grant permission to the I2C bus
 
 ---
 
