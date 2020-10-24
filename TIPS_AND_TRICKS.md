@@ -306,6 +306,20 @@ sudo apt -y install docker.io && sudo usermod -aG docker $USER
 
 ---
 
+## Autostart Docker Containers
+
+I noticed the auto restart docker containers not auto restarting.
+
+Add 
+
+```bash
+docker ps
+```
+
+to rc.local.
+
+---
+
 ## Install Azure SQL Edge with Docker
 
 ### Learn more about Azure SQL Edge
