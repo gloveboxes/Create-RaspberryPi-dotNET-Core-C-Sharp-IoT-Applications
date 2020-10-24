@@ -160,6 +160,34 @@ sudo watch -n 1  cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_cur_freq
 
 ---
 
+## Controlling onboard LEDs
+
+1. Edit the usercfg.txt file
+
+    ```bash
+    sudo nano /boot/firmware/usercfg.txt
+    ```
+
+### Turn off Power LED
+
+Add the following:
+
+```text
+dtparam=pwr_led_trigger=none
+dtparam=pwr_led_activelow=off
+```
+
+### Turn off Activity LED
+
+Add the following:
+
+```text
+dtparam=act_led_trigger=none
+dtparam=act_led_activelow=off
+```
+
+---
+
 ## Autostart services with rc.local and systemd
 
 ```bash
