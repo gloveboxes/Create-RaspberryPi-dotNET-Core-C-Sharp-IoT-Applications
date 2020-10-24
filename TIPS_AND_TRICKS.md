@@ -61,6 +61,12 @@ To use WiFi 5G you must set the wireless central regulatory domain.
 
 ---
 
+### Boot Ubuntu 20.10 from USB3 SSD
+
+Ubuntu 20.10 natively supports boot from USB3. Just burn image to your SSD drive, plug in, power up, and you are good to go.
+
+---
+
 ## Boot Ubuntu 20.04 from USB3 SSD
 
 For now boot from USB3 SSD is not directly supported by Ubuntu 20.04. But you can do a kernel pivot, which means boot from SD Card as normal and then switch the root drive to the SSD drive and continue to bring up and run the OS from the SSD. With a decent SSD you will get excellent IO performance on a Raspberry Pi.
