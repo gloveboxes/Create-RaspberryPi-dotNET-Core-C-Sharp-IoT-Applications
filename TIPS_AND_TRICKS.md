@@ -1,8 +1,15 @@
-# Raspberry Pi Ubuntu 20.04 Tips and Tricks
+# Raspberry Pi Ubuntu and Ubuntu Mate Tips and Tricks
 
 ![](./resources/ubuntu_raspberrypi_tips_tricks.png)
 
 ---
+
+## Which Linux distribution
+
+As at Nov 2020 my preferred distros are:
+
+1. Linux desktop distro: Ubuntu Mate 20.10 - SSD Bootable, and fast when over clocked
+1. Linux server distro: Ubuntu 20.10 - SSD Bootable, headless, fast
 
 ## Rename the Ubuntu Hostname
 
@@ -14,7 +21,7 @@ Edit the /etc/hosts file and replace any references to the old hostname with the
 
 ---
 
-## Enable WiFi from Ubuntu 20.04
+## Enabling 5G WiFi
 
 To use WiFi 5G you must set the wireless central regulatory domain.
 
@@ -29,12 +36,17 @@ To use WiFi 5G you must set the wireless central regulatory domain.
     ```text
     REGDOMAIN=AU
     ```
-3. Edit the /etc/netplan/50-cloud-init.yaml file
+
+## Wifi set up from CLI
+
+
+1. Edit the /etc/netplan/50-cloud-init.yaml file
 
     ```bash
     sudo nano /etc/netplan/50-cloud-init.yaml
     ```
-4. Configure the wifi settings. The following is an example of what you will likely need to add. You will need to add the **wifis** section onwards. Note, the indentation is important. Use 4 spaces per level.
+
+2. Configure the wifi settings. The following is an example of what you will likely need to add. You will need to add the **wifis** section onwards. Note, the indentation is important. Use 4 spaces per level.
 
     ```text
     # This file is generated from information provided by the datasource.  Changes
@@ -61,73 +73,9 @@ To use WiFi 5G you must set the wireless central regulatory domain.
 
 ---
 
-### Boot Ubuntu 20.10 from USB3 SSD
+### Boot Ubuntu and Ubuntu Mate from SSD
 
-Ubuntu 20.10 natively supports boot from USB3. Just burn image to your SSD drive, plug in, power up, and you are good to go.
-
----
-
-## Boot Ubuntu 20.04 from USB3 SSD
-
-For now boot from USB3 SSD is not directly supported by Ubuntu 20.04. But you can do a kernel pivot, which means boot from SD Card as normal and then switch the root drive to the SSD drive and continue to bring up and run the OS from the SSD. With a decent SSD you will get excellent IO performance on a Raspberry Pi.
-
-1. Create your Ubuntu 20.04 SD Card as usual. The easiest way is to use the Raspberry Pi Imager.
-2. Start the Raspberry Pi from the SD Card. Not you will either need to start with a HDMI screen, keyboard/mouse attached, or start the Raspberry Pi attached to your network by Ethernet.
-3. If you started the Raspberry Pi connected via Ethernet then you will need to SSH into the Raspberry Pi running Ubuntu 20.04.
-
-    ```bash
-    ssh ubuntu@ubuntu
-    ```
-
-    The default password is ubuntu.
-4. Connect the USB3 SSD drive to the Raspberry Pi. **WARNING**. The following process will delete all data from the USB3 SSD Drive.
-5. Run the following command on the Raspberry Pi.
-
-    ```bash
-    # Partition drive
-    sudo sfdisk --delete /dev/sda
-    sleep 5
-    echo 'type=83' | sudo sfdisk /dev/sda
-    sleep 5
-
-    # Format drive
-    sudo mkfs.ext4 /dev/sda1 -L usb3-writable
-
-    # Copy system to alternate boot drive
-    sudo mkdir /media/usbdrive
-    sudo mount /dev/sda1 /media/usbdrive
-    sudo rsync -avx / /media/usbdrive
-
-    # Update to cmdline.txt to boot from alternative drive
-    sudo sed -i 's/writable/usb3-writable/g' /boot/firmware/cmdline.txt
-
-    sudo reboot
-    ```
-
-    The system will reboot, login again and check that you are now running from the USB3 SSD drive. The easiest way is way is to use the disk free command.
-    ```bash
-    df
-    ```
-    You will see that root is mounted from /dev/sda1
-
-    ```text
-    ubuntu@ubuntu:~$ df
-    Filesystem     1K-blocks    Used Available Use% Mounted on
-    udev             1891920       0   1891920   0% /dev
-    tmpfs             388440    4068    384372   2% /run
-    /dev/sda1      122819416 4437140 112100280   4% /
-    tmpfs            1942184       0   1942184   0% /dev/shm
-    tmpfs               5120       0      5120   0% /run/lock
-    tmpfs            1942184       0   1942184   0% /sys/fs/cgroup
-    /dev/loop0         49664   49664         0 100% /snap/core18/1708
-    /dev/loop1         62720   62720         0 100% /snap/lxd/14808
-    /dev/loop2         26624   26624         0 100% /snap/snapd/8147
-    /dev/loop4         49664   49664         0 100% /snap/core18/1883
-    /dev/loop3         65152   65152         0 100% /snap/lxd/16104
-    /dev/mmcblk0p1    258095   99840    158256  39% /boot/firmware
-    /dev/loop6         26624   26624         0 100% /snap/snapd/8543
-    tmpfs             388436       0    388436   0% /run/user/1000
-    ```
+Ubuntu (including Mate) 20.10 natively supports boot from USB3. Just burn image to your SSD drive, plug in, power up, and you are good to go.
 
 ---
 
@@ -194,6 +142,91 @@ dtparam=act_led_activelow=off
 
 ---
 
+## Move temp directories to RAM disk
+
+Improve performance and reduce disk wear by moving /tmp and /var/tmp to tmpfs.
+
+```bash
+sudo nano /etc/fstab
+```
+
+add the following
+
+```text
+tmpfs    /tmp    tmpfs    defaults,noatime,mode=1777   0  0
+tmpfs    /var/tmp    tmpfs    defaults,noatime,mode=1777   0  0
+
+```
+
+---
+
+Useful utilities
+
+neofetch
+
+```bash
+sudo apt install neofetch
+```
+
+Run `neofetch` from termina.
+
+```bash
+netfetch
+```
+
+Output example.
+
+```text
+            .-/+oossssoo+/-.               dave@dave-ubuntu-mate
+        `:+ssssssssssssssssss+:`           ---------------------
+      -+ssssssssssssssssssyyssss+-         OS: Ubuntu 20.10 aarch64
+    .ossssssssssssssssssdMMMNysssso.       Host: Raspberry Pi 4 Model B Rev 1.4
+   /ssssssssssshdmmNNmmyNMMMMhssssss/      Kernel: 5.8.0-1006-raspi
+  +ssssssssshmydMMMMMMMNddddyssssssss+     Uptime: 3 hours, 10 mins
+ /sssssssshNMMMyhhyyyyhmNMMMNhssssssss/    Packages: 1969 (dpkg), 6 (snap)
+.ssssssssdMMMNhsssssssssshNMMMdssssssss.   Shell: bash 5.0.17
++sssshhhyNMMNyssssssssssssyNMMMysssssss+   Resolution: 1920x1080
+ossyNMMMNyMMhsssssssssssssshmmmhssssssso   DE: MATE 1.24.1
+ossyNMMMNyMMhsssssssssssssshmmmhssssssso   WM: Metacity (Marco)
++sssshhhyNMMNyssssssssssssyNMMMysssssss+   Theme: Green-Submarine [GTK2/3]
+.ssssssssdMMMNhsssssssssshNMMMdssssssss.   Icons: menta [GTK2/3]
+ /sssssssshNMMMyhhyyyyhdNMMMNhssssssss/    Terminal: mate-terminal
+  +sssssssssdmydMMMMMMMMddddyssssssss+     Terminal Font: Ubuntu Mono 13
+   /ssssssssssshdmNNNNmyNMMMMhssssss/      CPU: BCM2835 (4) @ 2.000GHz
+    .ossssssssssssssssssdMMMNysssso.       Memory: 2676MiB / 7630MiB
+      -+sssssssssssssssssyyyssss+-
+        `:+ssssssssssssssssss+:`
+            .-/+oossssoo+/-.
+```
+
+---
+
+## Set up xRDP server for Ubuntu Mate
+
+<https://linuxize.com/post/how-to-install-xrdp-on-ubuntu-20-04/>
+
+1. `sudo apt install xrdp`
+1. `sudo systemctl status xrdp`
+1. `sudo adduser xrdp ssl-cert`
+1. `sudo systemctl restart xrdp`
+1. `sudo ufw allow 3389`
+
+From desktop computer connect with RDP client like Windows Remote Desktop.
+
+---
+
+### Install SSH Server
+
+<https://www.cyberciti.biz/faq/ubuntu-linux-install-openssh-server/>
+
+
+1. Type `sudo apt-get install openssh-server`
+1. Enable the ssh service by typing `sudo systemctl enable ssh`
+1. Start the ssh service by typing `sudo systemctl start ssh`
+1. Test it by login into the system using `ssh user@server-name`
+
+---
+
 ## Autostart services with rc.local and systemd
 
 ```bash
@@ -221,12 +254,12 @@ sudo chmod +x /etc/rc.local
 
 ---
 
-## Raspberry Pi Sense Hat on Ubuntu 20.04
+## Raspberry Pi Sense Hat on Ubuntu
 
-1. Edit the usercfg.txt file
+1. Edit the config.txt file
 
     ```bash
-    sudo nano /boot/firmware/usercfg.txt
+    sudo nano /boot/firmware/config.txt
     ```
 
 2. Add the following to the end of the file. The first line will enable the Raspberry Pi to boot with the HAT attached. The second line enables I2C support.
@@ -266,36 +299,6 @@ add the following to the new rules file. Then save and reboot.
 ACTION=="add", KERNEL=="i2c-[0-1]*", MODE="0666"
 ```
 
-<!-- 
-
-You need to grant yourself permission to the /dev/i2c device.
-
-```bash
-sudo groupadd i2c
-sudo usermod -aG i2c $USER
-```
-
-All the following lines to /etc/rc.local as these permissions do not seem to persist. See notes above to create rc.local autostart on Ubuntu.
-
-```bash
-# Allow all to have access to I2C
-chown :i2c /dev/i2c-1
-chmod g+rw /dev/i2c-1
-
-```
-
-Check permissions applied
-
-```bash
-ls i2c-1 -all
-```
-
-should look like he following
-
-```text
-crw-rw---- 1 root i2c 89, 1 Apr  1 17:23 i2c-1
-``` -->
-
 ---
 
 ## Install Docker
@@ -310,7 +313,7 @@ sudo apt -y install docker.io && sudo usermod -aG docker $USER
 
 I noticed the auto restart docker containers not auto restarting.
 
-Add 
+Add
 
 ```bash
 docker ps
@@ -405,3 +408,73 @@ sudo ls /var/lib/docker/volumes/mysql-data/_data
 ```bash
 docker run --name mysql1 -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD="<Your Password>" --restart always -p 3306:3306 -d mysql/mysql-server
 ```
+
+---
+
+## Archive
+
+---
+
+## Boot Ubuntu 20.04 from USB3 SSD
+
+For now boot from USB3 SSD is not directly supported by Ubuntu 20.04. But you can do a kernel pivot, which means boot from SD Card as normal and then switch the root drive to the SSD drive and continue to bring up and run the OS from the SSD. With a decent SSD you will get excellent IO performance on a Raspberry Pi.
+
+1. Create your Ubuntu 20.04 SD Card as usual. The easiest way is to use the Raspberry Pi Imager.
+2. Start the Raspberry Pi from the SD Card. Not you will either need to start with a HDMI screen, keyboard/mouse attached, or start the Raspberry Pi attached to your network by Ethernet.
+3. If you started the Raspberry Pi connected via Ethernet then you will need to SSH into the Raspberry Pi running Ubuntu 20.04.
+
+    ```bash
+    ssh ubuntu@ubuntu
+    ```
+
+    The default password is ubuntu.
+4. Connect the USB3 SSD drive to the Raspberry Pi. **WARNING**. The following process will delete all data from the USB3 SSD Drive.
+5. Run the following command on the Raspberry Pi.
+
+    ```bash
+    # Partition drive
+    sudo sfdisk --delete /dev/sda
+    sleep 5
+    echo 'type=83' | sudo sfdisk /dev/sda
+    sleep 5
+
+    # Format drive
+    sudo mkfs.ext4 /dev/sda1 -L usb3-writable
+
+    # Copy system to alternate boot drive
+    sudo mkdir /media/usbdrive
+    sudo mount /dev/sda1 /media/usbdrive
+    sudo rsync -avx / /media/usbdrive
+
+    # Update to cmdline.txt to boot from alternative drive
+    sudo sed -i 's/writable/usb3-writable/g' /boot/firmware/cmdline.txt
+
+    sudo reboot
+    ```
+
+    The system will reboot, login again and check that you are now running from the USB3 SSD drive. The easiest way is way is to use the disk free command.
+    ```bash
+    df
+    ```
+    You will see that root is mounted from /dev/sda1
+
+    ```text
+    ubuntu@ubuntu:~$ df
+    Filesystem     1K-blocks    Used Available Use% Mounted on
+    udev             1891920       0   1891920   0% /dev
+    tmpfs             388440    4068    384372   2% /run
+    /dev/sda1      122819416 4437140 112100280   4% /
+    tmpfs            1942184       0   1942184   0% /dev/shm
+    tmpfs               5120       0      5120   0% /run/lock
+    tmpfs            1942184       0   1942184   0% /sys/fs/cgroup
+    /dev/loop0         49664   49664         0 100% /snap/core18/1708
+    /dev/loop1         62720   62720         0 100% /snap/lxd/14808
+    /dev/loop2         26624   26624         0 100% /snap/snapd/8147
+    /dev/loop4         49664   49664         0 100% /snap/core18/1883
+    /dev/loop3         65152   65152         0 100% /snap/lxd/16104
+    /dev/mmcblk0p1    258095   99840    158256  39% /boot/firmware
+    /dev/loop6         26624   26624         0 100% /snap/snapd/8543
+    tmpfs             388436       0    388436   0% /run/user/1000
+    ```
+
+---
