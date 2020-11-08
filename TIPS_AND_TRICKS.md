@@ -160,12 +160,11 @@ tmpfs    /var/tmp    tmpfs    defaults,noatime,mode=1777   0  0
 
 ---
 
-Useful utilities
+Useful apps/libraries
 
-neofetch
 
 ```bash
-sudo apt install neofetch
+sudo apt install neofetch git python3-pip cmake build-essential gdb
 ```
 
 Run `neofetch` from termina.
@@ -380,6 +379,10 @@ docker run --cap-add SYS_PTRACE -e 'ACCEPT_EULA=1' -e 'MSSQL_SA_PASSWORD=<Your p
 Northwind is a great starting point
 
 [Northwind and pubs sample databases for Microsoft SQL Server](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/northwind-pubs)
+
+### SQL Edge ONNX Tutorial
+
+[Machine learning and AI with ONNX in SQL Edge](https://docs.microsoft.com/en-us/azure/azure-sql-edge/onnx-overview)
 
 ---
 
