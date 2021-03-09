@@ -88,7 +88,7 @@ A great reference for this process is [How to overclock Raspberry Pi 4](https://
 1. Edit the usercfg.txt file
 
     ```bash
-    sudo nano /boot/firmware/usercfg.txt
+    sudo nano /boot/firmware/config.txt
     ```
 
 2. Add the following overclocking options to the end of the file. I found over clocking to 2000 about right, for my Pi, any higher and the system became unstable.
