@@ -71,6 +71,16 @@ To use WiFi 5G you must set the wireless central regulatory domain.
                         password: "<Your wifi access point password>"
     ```
 
+Then generate and apply the netplan
+
+```bash
+sudo netplan generate
+```
+
+```bash
+sudo netplan apply
+```
+
 ---
 
 ### Boot Ubuntu and Ubuntu Mate from SSD
