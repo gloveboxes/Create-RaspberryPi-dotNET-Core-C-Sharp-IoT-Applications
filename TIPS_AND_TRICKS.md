@@ -320,15 +320,11 @@ sudo apt -y install docker.io && sudo usermod -aG docker $USER
 
 ## Autostart Docker Containers
 
-I noticed the auto restart docker containers not auto restarting.
-
-Add
+Enable the docker service to start after reboot.
 
 ```bash
-docker ps
+sudo systemctl enable docker.service
 ```
-
-to rc.local.
 
 ---
 
