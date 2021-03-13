@@ -19,6 +19,14 @@ sudo hostnamectl set-hostname new-name
 
 Edit the /etc/hosts file and replace any references to the old hostname with the new host name.
 
+## Ubuntu 20.10 Server Install on Raspberry Pi
+
+[How to install Ubuntu Server on your Raspberry Pi](https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#1-overview)
+
+### Getting setup with Wi-Fi for initial boot (headless)
+
+[Getting setup with Wi-Fi](https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#3-wifi-or-ethernet)
+
 ---
 
 ## Enabling 5G WiFi
