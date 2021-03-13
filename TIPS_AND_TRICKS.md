@@ -11,6 +11,10 @@ As at Nov 2020 my preferred distros are:
 1. Linux desktop distro: Ubuntu Mate 20.10 - SSD Bootable, and fast when over clocked
 1. Linux server distro: Ubuntu 20.10 - SSD Bootable, headless, fast
 
+## Reviewing Pi 4 boot EEPROM version
+
+[Raspberry Pi 4 boot EEPROM](https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md)
+
 ## Rename the Ubuntu Hostname
 
 ```bash
