@@ -95,7 +95,7 @@ A great reference for this process is [How to overclock Raspberry Pi 4](https://
 
 **WARNING**: If you overclock the Raspberry Pi 4 you will need some sort of cooling otherwise the CPU will heat up quickly and the CPU frequency will be throttled back to reduce the temperature which somewhat defeats the purpose of overclocking.
 
-1. Edit the usercfg.txt file
+1. Edit the config.txt file
 
     ```bash
     sudo nano /boot/firmware/config.txt
@@ -126,10 +126,10 @@ sudo watch -n 1  cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_cur_freq
 
 ## Controlling onboard LEDs
 
-1. Edit the usercfg.txt file
+1. Edit the config.txt file
 
     ```bash
-    sudo nano /boot/firmware/usercfg.txt
+    sudo nano /boot/firmware/config.txt
     ```
 
 ### Turn off Power LED
@@ -290,7 +290,6 @@ sudo chmod +x /etc/rc.local
 
 [How can I set device rw permissions permanently on Raspbian?](https://unix.stackexchange.com/questions/147494/how-can-i-set-device-rw-permissions-permanently-on-raspbian)
 
-Works on Raspberry Pi OS and Ubuntu 20.04. Grants permissions to the I2C bus for all users.
 
 ```bash
 cd /etc/udev/rules.d
