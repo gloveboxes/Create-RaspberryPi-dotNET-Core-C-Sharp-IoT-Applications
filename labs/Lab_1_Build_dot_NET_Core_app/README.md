@@ -22,13 +22,13 @@ The source and the samples for this tutorial can be found [here](https://github.
 
 ## Conventions used in the tutorial
 
-The tutorial covers Raspberry Pi OS, Ubuntu 20.04 for both ARM32 and ARM64.
+The tutorial covers Raspberry Pi OS, Ubuntu 20.10 for both ARM32 and ARM64.
 
 The tutorial refers to user and host as **user@host**.
 
 For Raspberry Pi this maps to **pi@raspberrypi.local** or depending on your network set up **pi@raspberrypi**. The default password is **raspberry**.
 
-For Ubuntu 20.04 this maps to **ubuntu@ubuntu.local** or **ubuntu@ubuntu**. The default password is **ubuntu**.
+For Ubuntu 20.10 this maps to **ubuntu@ubuntu.local** or **ubuntu@ubuntu**. The default password is **ubuntu**.
 
 ---
 
@@ -165,7 +165,7 @@ The following commands makes a .NET Core project directory, then and create the 
 
 1. From the command prompt.
 2. Start Visual Studio Code.
-    > Note, there is a fullstop after the command. This tell Visual Studio Code to open the project in the current folder.
+    > Note, there is a full stop after the command. This tell Visual Studio Code to open the project in the current folder.
 
     ```
     code .
@@ -177,6 +177,12 @@ The following commands makes a .NET Core project directory, then and create the 
 
     > The Visual Studio Code Remote - WSL extension lets you use the Windows Subsystem for Linux (WSL) as your full-time development environment right from VS Code. You can develop in a Linux-based environment, use Linux-specific toolchains and utilities, and run and debug your Linux-based applications all from the comfort of Windows.
     ![](resources/architecture-wsl.png)
+
+---
+
+## Add the C# Visual Studio Code Extension
+
+[Installing C# support](https://code.visualstudio.com/docs/languages/csharp#_installing-c35-support?WT.mc_id=julyot-dnc-dglover)
 
 ---
 
@@ -206,7 +212,7 @@ namespace dotnet.core.iot
             {
                 if (temperature.IsAvailable)
                 {
-                    Console.WriteLine($"The CPU temperature is {temperature.Temperature.Celsius}");
+                    Console.WriteLine($"The CPU temperature is {temperature.Temperature.DegreesCelsius}");
                 }
                 Thread.Sleep(2000); // sleep for 2000 milliseconds, 2 seconds
             }
