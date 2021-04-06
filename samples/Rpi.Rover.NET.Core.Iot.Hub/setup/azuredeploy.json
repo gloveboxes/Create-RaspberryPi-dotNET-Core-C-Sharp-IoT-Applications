@@ -1,0 +1,75 @@
+// https://docs.microsoft.com/en-us/azure/iot-dps/quick-setup-auto-provision-rm
+
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "siteLocation": {
+            "type": "string",
+            "defaultValue": "East US",
+            "metadata": {
+                "description": "Select your preferred location"
+            }
+        },
+        "iotHubTier": {
+            "type": "string",
+            "allowedValues": [
+                "F1",
+                "S1"
+            ],
+            "defaultValue": "F1",
+            "metadata": {
+                "description": "The IoT Hub SKU."
+            }
+        }
+    },
+    "variables": {
+        "UniqueStringBasedOnTimeStamp": "[uniqueString( resourceGroup().id, deployment().name )]",
+        "iotHubName": "[concat('IOT-HUB-', variables('UniqueStringBasedOnTimeStamp'))]",
+        "dpsName": "[concat('DPS-', variables('UniqueStringBasedOnTimeStamp'))]",
+        "location": "[parameters('siteLocation')]",
+        "iotHubResourceId": "[resourceId('Microsoft.Devices/Iothubs', variables('iotHubName'))]",
+        "iotHubKeyName": "iothubowner",
+        "iotHubKeyResource": "[resourceId('Microsoft.Devices/Iothubs/Iothubkeys', variables('iotHubName'), variables('iotHubKeyName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Devices/IotHubs",
+            "apiVersion": "2019-11-04",
+            "name": "[variables('iotHubName')]",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "[parameters('ioTHubTier')]",
+                "capacity": 1
+            },
+            "properties": {
+                "features": "None"
+            }
+        },
+        {
+            "type": "Microsoft.Devices/provisioningServices",
+            "apiVersion": "2020-01-01",
+            "name": "[variables('dpsName')]",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "S1",
+                "tier": "Standard",
+                "capacity": 1
+            },
+            "properties": {
+                "state": "Active",
+                "provisioningState": "Succeeded",
+                "iotHubs": [
+                    {
+                        "connectionString": "[concat('HostName=', reference(variables('iotHubResourceId')).hostName, ';SharedAccessKeyName=', variables('iotHubKeyName'), ';SharedAccessKey=', listkeys(variables('iotHubKeyResource'), '2017-07-01').primaryKey)]",
+                        "location": "[resourceGroup().location]",
+                        "name": "[concat(variables('iotHubName'),'.azure-devices.net')]"
+                    }
+                ]
+            },
+            "dependsOn": [
+                "[variables('iotHubName')]"
+            ]
+        }
+    ]
+}

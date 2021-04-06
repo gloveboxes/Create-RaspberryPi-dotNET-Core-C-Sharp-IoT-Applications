@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<style>
+	#status {
+		background-color: blue;
+		font-size: 4;
+		font-weight: bold;
+		color: white;
+		line-height: 140%;
+	}
+
+	#warning {
+		color: red;
+	}
+
+	label {
+		display: inline-block;
+		float: left;
+		clear: left;
+		width: 60px;
+		text-align: right;
+	}
+
+	input {
+		display: inline-block;
+		float: left;
+	}
+
+	.button {
+		background-color: blueviolet;
+		/* Green */
+		border: none;
+		color: white;
+		padding: 20px 10px;
+		margin: 16px 10px 10px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		width: 120px;
+		/* height: 80px; */
+		border-radius: 12px;
+	}
+
+	.button-connect {
+		background-color: green;
+		border: none;
+		color: white;
+		padding: 10px 10px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		/* width: 100px; */
+		border-radius: 12px;
+	}
+
+	.button-red {
+		background-color: red;
+		border: none;
+		color: white;
+		padding: 30px 10px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		width: 80px;
+		border-radius: 50%;
+	}
+</style>
+
+<head>
+	<title>Rover</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript">
+
+		const userAction = async (cmd) => {
+			url = 'https://rover-controller-iot-hub.azurewebsites.net/api/control?cmd=' + cmd
+			const response = await fetch(url);
+		}
+
+		document.onkeydown = function (event) {
+			switch (event.keyCode) {
+				case 38: // up key
+					userAction('Forward');
+					break;
+				case 40: // down key
+					userAction('Backward');
+					break;
+				case 37: // left key
+					userAction('RightForward');
+					break;
+				case 39: // right key
+					userAction('LeftForward');
+					break;
+				case 32:
+					userAction('Stop');
+					break;
+				case 122: // z or Z key
+				case 90:
+					userAction('SharpLeft');
+					break;
+				case 120: // x or X key
+				case 88:
+					userAction('SharpRight');
+					break;
+				case 115: // s or S key
+				case 83:
+					userAction('Shutdown');
+					break;
+			}
+		};
+
+	</script>
+</head>
+
+<body>
+	<h1>.NET Core and C# Raspberry Pi Rover with Azure IoT Direct Methods</h1>
+
+	<br>
+	<img src="dotnet-iot.jpg">
+	<br>
+	<br>
+
+	<hr>
+
+	<table cellpadding="10">
+		<tr>
+			<td>
+				<div style="text-align:center;">
+
+					<button class="button" onclick="userAction('Forward');">Forward</button>
+					<br>
+					<button class="button" onclick="userAction('RightForward')">Left</button>
+					<button class="button" onclick="userAction('LeftForward')">Right</button>
+					<br>
+					<button class="button" onclick="userAction('SharpLeft')">Circle&nbsp;left</button>
+					<button class="button" onclick="userAction('SharpRight')">Circle&nbsp;right</button>
+					<br>
+					<button class="button" onclick="userAction('Backward')">Backward</button>
+					<br><br>
+					<button class="button-red" onclick="userAction('Stop')">Stop</button>
+					<br><br>
+				</div>
+			</td>
+			<td>
+				<img src="rover.jpg" alt=".NET Core Rover" width="350">
+			</td>
+			<td>
+				<b>Rover key controls</b>
+				<table cellpadding="4">
+					<tr>
+						<th>Key</th>
+						<th>Direction</th>
+					</tr>
+					<tr>
+						<td id="warning"><b>Space</b></td>
+						<td id="warning"><b>Stop</b></td>
+					</tr>
+					<tr>
+						<td>&larr;</td>
+						<td>Left</td>
+					</tr>
+					<tr>
+						<td>&rarr;</td>
+						<td>Right</td>
+					</tr>
+					<tr>
+						<td>&uarr;</td>
+						<td>Forward</td>
+					</tr>
+					<tr>
+						<td>&darr;</td>
+						<td>Backward</td>
+					</tr>
+					<tr>
+						<td>z</td>
+						<td>Circle left</td>
+					</tr>
+					<tr>
+						<td>x</td>
+						<td>Circle right</td>
+					</tr>
+					<tr>
+						<td>s</td>
+						<td>Shutdown</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>
