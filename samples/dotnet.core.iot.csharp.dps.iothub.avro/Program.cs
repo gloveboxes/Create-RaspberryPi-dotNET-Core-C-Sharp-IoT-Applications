@@ -72,7 +72,7 @@ namespace DotNet.Core.IotHub.Avro
                 {
                     while (true)
                     {
-                        if (_temperature.IsAvailable) { temperature = Math.Round(_temperature.Temperature.Celsius, 2); }
+                        if (_temperature.IsAvailable) { temperature = Math.Round(_temperature.Temperature.DegreesCelsius, 2); }
                         else { temperature = rand.Next(15, 35); }
                         
                         try

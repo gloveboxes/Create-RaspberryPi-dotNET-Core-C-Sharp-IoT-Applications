@@ -53,7 +53,7 @@ namespace dotnet.core.iot
                         {
                             try
                             {
-                                temperature = Math.Round(_temperature.Temperature.Celsius, 2);
+                                temperature = Math.Round(_temperature.Temperature.DegreesCelsius, 2);
 
                                 Console.WriteLine($"The CPU temperature is {temperature}");
                                 await SendMsgIotHub(temperature);

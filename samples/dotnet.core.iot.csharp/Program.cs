@@ -16,7 +16,7 @@ namespace dotnet.core.iot
                 
                 if (temperature.IsAvailable)
                 {
-                    Console.WriteLine($"The CPU temperature is {temperature.Temperature.Celsius}");
+                    Console.WriteLine($"The CPU temperature is {temperature.Temperature.DegreesCelsius}");
                 }
                 Thread.Sleep(2000); // sleep for 2000 milliseconds, 2 seconds
             }

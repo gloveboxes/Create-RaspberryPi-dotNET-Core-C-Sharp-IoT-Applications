@@ -46,7 +46,7 @@ namespace dotnet.core.iot
             while (true)
             {
                 temperature = Math.Round(th.Temperature.DegreesCelsius, 1);
-                humidity = Math.Round(th.Humidity, 1);
+                humidity = Math.Round(th.Humidity.Percent, 1);
                 pressure = 1000 + rand.Next(0, 200);
 
                 try
