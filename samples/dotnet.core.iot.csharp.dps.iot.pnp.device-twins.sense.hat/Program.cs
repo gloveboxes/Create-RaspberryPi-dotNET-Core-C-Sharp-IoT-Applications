@@ -34,6 +34,7 @@ namespace dotnet.core.iot
         private const string ModelId = "dtmi:com:example:Thermostat;1";
         static DeviceClient iotClient = null;
         static double temperature;
+        static double maxTemperature = double.MinValue;
 
 
         static async Task Main(string[] args)
@@ -55,6 +56,7 @@ namespace dotnet.core.iot
                 {
                     await iotClient.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertyChangedAsync, null).ConfigureAwait(false);   // callback for Device Twin updates
                     await DeviceTwinGetInitialState(iotClient); // Get current cloud state of the device twin
+                    
                     while (true)
                     {
                         if (_temperature.IsAvailable)
@@ -69,6 +71,11 @@ namespace dotnet.core.iot
                                 
                                 roomState = (int)temperature > targetTemperature ? RoomAction.Cooling : (int)temperature < targetTemperature ? RoomAction.Heating : RoomAction.Green;
                                 await UpdateRoomAction(roomState);
+
+                                if (temperature > maxTemperature){
+                                    maxTemperature = temperature;
+                                    await UpdateDeviceTwin("maxTempSinceLastReboot", maxTemperature);
+                                }
                             }
                             catch (Exception ex)
                             {
@@ -96,7 +103,7 @@ namespace dotnet.core.iot
             Twin twin = await iotClient.GetTwinAsync().ConfigureAwait(false);
             if (twin.Properties.Desired.Contains("targetTemperature"))
             {
-                double.TryParse(Convert.ToString(twin.Properties.Desired["targetTemperature"]["value"]), out targetTemperature);
+                double.TryParse(Convert.ToString(twin.Properties.Desired["targetTemperature"]), out targetTemperature);
             }
         }
 
@@ -104,7 +111,7 @@ namespace dotnet.core.iot
         {
             if (desiredProperties.Contains("targetTemperature"))
             {
-                double.TryParse(Convert.ToString(desiredProperties["targetTemperature"]["value"]), out targetTemperature);
+                double.TryParse(Convert.ToString(desiredProperties["targetTemperature"]), out targetTemperature);
                 await UpdateDeviceTwin("targetTemperature", targetTemperature);
                 
                 roomState = (int)temperature > targetTemperature ? RoomAction.Cooling : (int)temperature < targetTemperature ? RoomAction.Heating : RoomAction.Green;
