@@ -32,9 +32,7 @@ namespace dotnet.core.iot
         static RoomAction previousRoomState = RoomAction.Unknown;
         static RoomAction roomState = RoomAction.Unknown;
         private const string ModelId = "dtmi:com:example:Thermostat;1";
-
         static DeviceClient iotClient = null;
-
         static double temperature;
 
 
