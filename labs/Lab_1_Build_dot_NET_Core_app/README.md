@@ -110,15 +110,15 @@ The following creates a new SSH key pair and copies the SSH public key to the Ra
 
 #### ARM32
 
-    ```bash
-    ssh user@host "curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -r linux-arm -v latest -l ~/vsdbg"
-    ```
+```bash
+ssh user@host "curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -r linux-arm -v latest -l ~/vsdbg"
+```
 
 #### ARM64
 
-    ```bash
-    ssh user@host "curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -r linux-arm64 -v latest -l ~/vsdbg"
-    ```
+```bash
+ssh user@host "curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -r linux-arm64 -v latest -l ~/vsdbg"
+```
 
 ---
 

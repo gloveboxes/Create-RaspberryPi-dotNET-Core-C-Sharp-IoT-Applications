@@ -26,7 +26,6 @@ namespace dotnet.core.iot
         private const string GlobalDeviceEndpoint = "global.azure-devices-provisioning.net";
         static CpuTemperature _temperature = new CpuTemperature();
         static int _msgId = 0;
-
         static double targetTemperature = 0;
         enum RoomAction { Unknown, Heating, Cooling, Green }
         static RoomAction previousRoomState = RoomAction.Unknown;
@@ -38,8 +37,7 @@ namespace dotnet.core.iot
 
 
         static async Task Main(string[] args)
-        {           
-
+        {
             using (var security = new SecurityProviderSymmetricKey(registrationId, primaryKey, secondaryKey))
             using (var transport = new ProvisioningTransportHandlerMqtt())
             {
@@ -56,7 +54,7 @@ namespace dotnet.core.iot
                 {
                     await iotClient.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertyChangedAsync, null).ConfigureAwait(false);   // callback for Device Twin updates
                     await DeviceTwinGetInitialState(iotClient); // Get current cloud state of the device twin
-                    
+
                     while (true)
                     {
                         if (_temperature.IsAvailable)
@@ -68,11 +66,12 @@ namespace dotnet.core.iot
                                 Console.WriteLine($"The CPU temperature is {temperature}");
 
                                 await SendMsgIotHub(iotClient, temperature);
-                                
+
                                 roomState = (int)temperature > targetTemperature ? RoomAction.Cooling : (int)temperature < targetTemperature ? RoomAction.Heating : RoomAction.Green;
                                 await UpdateRoomAction(roomState);
 
-                                if (temperature > maxTemperature){
+                                if (temperature > maxTemperature)
+                                {
                                     maxTemperature = temperature;
                                     await UpdateDeviceTwin("maxTempSinceLastReboot", maxTemperature);
                                 }
@@ -113,7 +112,7 @@ namespace dotnet.core.iot
             {
                 double.TryParse(Convert.ToString(desiredProperties["targetTemperature"]), out targetTemperature);
                 await UpdateDeviceTwin("targetTemperature", targetTemperature);
-                
+
                 roomState = (int)temperature > targetTemperature ? RoomAction.Cooling : (int)temperature < targetTemperature ? RoomAction.Heating : RoomAction.Green;
                 await UpdateRoomAction(roomState);
             }
