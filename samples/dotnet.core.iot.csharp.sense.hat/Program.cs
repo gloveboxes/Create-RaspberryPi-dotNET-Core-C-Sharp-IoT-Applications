@@ -37,7 +37,7 @@ namespace dotnet.core.iot
             {
                 if (temperature.IsAvailable)
                 {
-                    Console.WriteLine($"The CPU temperature is {Math.Round(temperature.Temperature.DegreesCelsius, 2)}, Room temperature is {Math.Round(pt.Temperature.Celsius, 2)}");
+                    Console.WriteLine($"The CPU temperature is {Math.Round(temperature.Temperature.DegreesCelsius, 2)}, Room temperature is {Math.Round(pt.Temperature.DegreesCelsius, 2)}");
                 }
                 Thread.Sleep(2000); // sleep for 2000 milliseconds, 2 seconds
             }

@@ -1,11 +1,11 @@
 {
     "version": "0.2.0",
-    "configurations": [
+    "configurations": [        
         {
-            "name": "ARM32 Debug Publish, Launch, and Attach Debugger",
+            "name": "Debug Publish, Launch, and Attach Debugger",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "ARM32DebugPublish",
+            "preLaunchTask": "DebugPublish",
             "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
             "cwd": "~/${workspaceFolderBasename}",
             "stopAtEntry": false,
@@ -20,46 +20,10 @@
             }
         },
         {
-            "name": "ARM32 Release Publish, Launch, and Attach Debugger",
+            "name": "Release Publish, Launch, and Attach Debugger",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "ARM32ReleasePublish",
-            "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
-            "cwd": "~/${workspaceFolderBasename}",
-            "stopAtEntry": false,
-            "console": "internalConsole",
-            "pipeTransport": {
-                "pipeCwd": "${workspaceRoot}",
-                "pipeProgram": "/usr/bin/ssh",
-                "pipeArgs": [
-                    "user@host"
-                ],
-                "debuggerPath": "~/vsdbg/vsdbg"
-            }
-        },
-        {
-            "name": "ARM64 Debug Publish, Launch, and Attach Debugger",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "ARM64DebugPublish",
-            "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
-            "cwd": "~/${workspaceFolderBasename}",
-            "stopAtEntry": false,
-            "console": "internalConsole",
-            "pipeTransport": {
-                "pipeCwd": "${workspaceRoot}",
-                "pipeProgram": "/usr/bin/ssh",
-                "pipeArgs": [
-                    "user@host"
-                ],
-                "debuggerPath": "~/vsdbg/vsdbg"
-            }
-        },
-        {
-            "name": "ARM64 Release Publish, Launch, and Attach Debugger",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "ARM64ReleasePublish",
+            "preLaunchTask": "ReleasePublish",
             "program": "~/${workspaceFolderBasename}/${workspaceFolderBasename}",
             "cwd": "~/${workspaceFolderBasename}",
             "stopAtEntry": false,
