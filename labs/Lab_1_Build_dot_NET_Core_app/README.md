@@ -362,7 +362,7 @@ The build task is responsible for compiling the application and copying the code
                 "problemMatcher": "$msCompile",
                 "args": [
                     "-c",
-                    "\"dotnet publish -r linux-arm -c Debug -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ user@host:~/${workspaceFolderBasename}\"",
+                    "\"dotnet publish -r linux-arm --self-contained -c Debug -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ user@host:~/${workspaceFolderBasename}\"",
                 ]
             },
             {
@@ -372,7 +372,7 @@ The build task is responsible for compiling the application and copying the code
                 "problemMatcher": "$msCompile",
                 "args": [
                     "-c",
-                    "\"dotnet publish -r linux-arm -c Release -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ user@host:~/${workspaceFolderBasename}\"",
+                    "\"dotnet publish -r linux-arm --self-contained -c Release -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ user@host:~/${workspaceFolderBasename}\"",
                 ]
             },
             {
@@ -382,7 +382,7 @@ The build task is responsible for compiling the application and copying the code
                 "problemMatcher": "$msCompile",
                 "args": [
                     "-c",
-                    "\"dotnet publish -r linux-arm64 -c Debug -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ user@host:~/${workspaceFolderBasename}\"",
+                    "\"dotnet publish -r linux-arm64 --self-contained -c Debug -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ user@host:~/${workspaceFolderBasename}\"",
                 ]
             },
             {
@@ -392,14 +392,14 @@ The build task is responsible for compiling the application and copying the code
                 "problemMatcher": "$msCompile",
                 "args": [
                     "-c",
-                    "\"dotnet publish -r linux-arm64 -c Release -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ user@host:~/${workspaceFolderBasename}\"",
+                    "\"dotnet publish -r linux-arm64 --self-contained -c Release -o ./bin/linux-arm/publish ./${workspaceFolderBasename}.csproj && rsync -rvuz ./bin/linux-arm/publish/ user@host:~/${workspaceFolderBasename}\"",
                 ]
             }
         ]
     }
     ```
 
-4. [Find and Replace](https://code.visualstudio.com/docs/editor/codebasics?WT.mc_id=julyot-dnc-dglover) **raspberrypi.local** with the host name or IP address of your Raspberry.
+4. [Find and Replace](https://code.visualstudio.com/docs/editor/codebasics?WT.mc_id=julyot-dnc-dglover) **user@host** with the your user name and host name (or IP address of your Raspberry).
 
 ---
 
