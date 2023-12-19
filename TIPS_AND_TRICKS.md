@@ -405,8 +405,27 @@ Northwind is a great starting point
 
 ## Install PostgreSQL
 
+[Docker Containers Tutorial – Persistent Storage Volumes and Stateful Containers](http://www.ethernetresearch.com/docker/docker-tutorial-persistent-storage-volumes-and-stateful-containers/)
+
+Create a new persistent storage volume in the Host Machine.
+
 ```bash
 docker volume create postgresql-data 
+```
+
+Inspect the storage volume to get more detailed information.
+
+```bash
+docker volume inspect postgresql-data 
+```
+
+Check the data in the storage volume
+
+```bash
+sudo ls /var/lib/docker/volumes/postgresql-data 
+```
+
+```bash
 docker run --name postgresql -e POSTGRES_PASSWORD=YOUR_STRONG_PASSWORD -v postgresql-data:/var/lib/postgresql/data -p 5432:5432 -d postgres
 ```
 
