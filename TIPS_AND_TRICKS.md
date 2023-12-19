@@ -429,6 +429,11 @@ sudo ls /var/lib/docker/volumes/postgresql-data
 docker run --name postgresql -e POSTGRES_PASSWORD=YOUR_STRONG_PASSWORD -v postgresql-data:/var/lib/postgresql/data -p 5432:5432 -d postgres
 ```
 
+### PostgreSQL admin tools
+
+- [pgAdmin 4](https://www.pgadmin.org/download/): Generally easier easier to use.
+- [DbVisulizer](https://www.dbvis.com/): Some advanced admin tools and visualizations.
+
 ---
 
 ## Install MySql
