@@ -403,6 +403,15 @@ Northwind is a great starting point
 
 ---
 
+## Install PostgreSQL
+
+```bash
+docker volume create postgresql-data 
+docker run --name postgresql -e POSTGRES_PASSWORD=YOUR_STRONG_PASSWORD -v postgresql-data:/var/lib/postgresql/data -p 5432:5432 -d postgres
+```
+
+---
+
 ## Install MySql
 
 [Docker Containers Tutorial – Persistent Storage Volumes and Stateful Containers](http://www.ethernetresearch.com/docker/docker-tutorial-persistent-storage-volumes-and-stateful-containers/)
