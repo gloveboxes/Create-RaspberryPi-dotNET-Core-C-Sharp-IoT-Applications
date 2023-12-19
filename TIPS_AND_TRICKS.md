@@ -431,6 +431,8 @@ docker run --name postgresql -e POSTGRES_PASSWORD=YOUR_STRONG_PASSWORD -v postgr
 
 ### PostgreSQL admin tools
 
+Supported on Windows, Linux, and macOS on X64 and Apple Silicon ARM64.
+
 - [pgAdmin 4](https://www.pgadmin.org/download/): Generally easier to use.
 - [DbVisulizer](https://www.dbvis.com/): Some advanced admin tools and visualizations.
 
